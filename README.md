@@ -13,3 +13,21 @@ A single-player game in which the user inputs an arrow key to move a snake which
 4. There is only one food at a time. 
 5. If the snake runs to the edge of the box, it will continue to the other side(bottom of the box will continue from the top, left will continue at right, and vice-versa). 
 6. Game ends when the snake eats their own body.
+
+## Feature:
+1. Score 1 point when the snake manages to eat one food
+2. Leaderboard
+3. Move up, down, left, and right using arrow
+4. Limited playing area (For the boundary of food appearance)
+5. Snake’s constant moves
+6. Randomized food location (will change location when not get eaten in 30 seconds)
+7. Food appears randomly after it has been eaten
+8. Game over when snake touches its own body
+
+## Coding requirements:
+1. <cstdlib> to use rand() and srand() for food location
+2. <ctime> to generate seed for srand()
+3. <iomanip> to set width
+4. <string> for string manipulation
+5. Using bool, int, array, and other basic data types.
+6. Using switches, if-statements, and loops.
