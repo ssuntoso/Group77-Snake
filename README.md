@@ -25,9 +25,9 @@ A single-player game in which the user inputs an arrow key to move a snake which
 8. Game over when snake touches its own body
 
 ## Coding requirements:
-1. <cstdlib> to use rand() and srand() for food location
-2. <ctime> to generate seed for srand()
-3. <iomanip> to set width
-4. <string> for string manipulation
+1. cstdlib to use rand() and srand() for food location
+2. ctime to generate seed for srand()
+3. iomanip to set width
+4. string for string manipulation
 5. Using bool, int, array, and other basic data types.
 6. Using switches, if-statements, and loops.
