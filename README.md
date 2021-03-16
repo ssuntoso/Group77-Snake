@@ -29,7 +29,7 @@ A single-player game in which the user inputs an arrow key to move a snake which
 8. Game over when snake touches its own body
 
 ## Coding requirements
-| Checklist  | Requierment | Remark |
+| Checklist  | Requirement | Remark |
 | :-------------: | ------------- | ------------- |
 | ✔️ | Generation of random game sets or events | - `<cstdlib>` to use `rand()` and `srand()` for random food location<br>- `<ctime>` to generate seed for `srand()`<br>- `<iomanip>` to set width<br>- `<string>` for string manipulation<br>- Using switches, if-statements, and loops|
 | ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, and other basic data types<br>- Use 2D 'array' for storing data |
