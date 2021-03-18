@@ -32,7 +32,7 @@ A single-player game in which the user inputs an arrow key to move a snake which
 | Checklist  | Requirement | Remark |
 | :-------------: | ------------- | ------------- |
 | ✔️ | Generation of random game sets or events | - `<cstdlib>` to use `rand()` and `srand()` for random food location<br>- `<ctime>` to generate seed for `srand()`<br>- `<iomanip>` to set width<br>- `<string>` for string manipulation<br>- Using switches, if-statements, and loops|
-| ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, and other basic data types<br>- Use 2D 'array' for storing data |
+| ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, `struct`, and other basic data types<br>- Use 2D 'array' for storing data |
 | ✔️ | Dynamic memory management | - use `new` and `delete` operator to store temporary game state array |
-| ✔️ | File input/output (e.g., for loading/saving game status) | - for loading high score and leaderboard |
-| ✔️ | Program codes in multiple files | - codes header and custom function will be seperated from the main file |
+| ✔️ | File input/output (e.g., for loading/saving game status) | - for loading(extracting and inserting) high score and leaderboard |
+| ✔️ | Program codes in multiple files | - codes header and custom classes(interface and implementation) or functions will be separated from the main file |
