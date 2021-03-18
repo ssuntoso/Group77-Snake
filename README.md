@@ -4,7 +4,7 @@
 Group: **77**<br/>
 <br/>
 Group members<br/>
-:panda_face: Rafael Matthew Susanto Kwan 3035742425<br/>
+:panda_face: Rafael Matthew Susanto Kwan - 3035742425<br/>
 :llama: Sean Michael Suntoso - 3035742437
 
 ## Game description
@@ -34,5 +34,5 @@ A single-player game in which the user inputs an arrow key to move a snake which
 | ✔️ | Generation of random game sets or events | - `<cstdlib>` to use `rand()` and `srand()` for random food location<br>- `<ctime>` to generate seed for `srand()`<br>- `<iomanip>` to set width<br>- `<string>` for string manipulation<br>- Using switches, if-statements, and loops|
 | ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, and other basic data types<br>- Use 2D 'array' for storing data |
 | ✖️ | Dynamic memory management |
-| ✖️ | File input/output (e.g., for loading/saving game status) |
+| ✔️ | File input/output (e.g., for loading/saving game status) | for loading high score and leaderboard |
 | ✖️ | Program codes in multiple files |
