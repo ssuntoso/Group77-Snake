@@ -7,7 +7,7 @@ const int height = 20;
 const int width = 20;
 const char border = 178;
 
-class Position {
+class position {
 public:
   int x;
   int y;
@@ -30,7 +30,7 @@ void Draw()
       if (j == 0) {
         cout << border;
       }
-      if (i == x && j == y) {
+      if (i == position.x && j == position.y) {
         cout << "O";
       }
       if (j == width - 1) {
