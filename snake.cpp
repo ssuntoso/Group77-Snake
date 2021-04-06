@@ -8,11 +8,11 @@ using namespace std;
 
 const int height = 20;
 const int width = 20;
-const char barrier = 178;
-const char fruit = 229;
+const char barrier = 'H';
+const char fruit = '*';
 bool gameOver;
 
-char oldz;
+int nTail;
 
 class position {
 public:
@@ -91,51 +91,28 @@ void userInput(char z)
   }
 }
 
-/*
 void gameplay()
 {
-  return 0;
-}
-*/
-
-
-void delay(int seconds)
-{
-    // Converting time into milli_seconds
-    int milliSeconds = 1000 * seconds;
-  
-    // Storing start time
-    clock_t startTime = clock();
-  
-    // looping till required time is not achieved
-    while (clock() < startTime + milliSeconds){
-      ;
-    }
+  if (current.x == current.fruitx && current.y == current.fruity)
+	{
+		current.score += 10;
+		current.fruitx = rand() % width;
+		current.fruity = rand() % height;
+		nTail++;
+	}
 }
 
 int main()
 {
   char z;
 
-  startPosition();
+  startPosition();    // set position on board
   while (gameOver == false)
   {
-    z = false;
-
     userInterface();
-
-    clock_t startTime = clock();
-    cout << oldz;
-
-    while (clock() < startTime + 50){
-      cin >> z;
-      if(z != oldz){
-        oldz = z;
-        break;
-      }
-    }
-    // gameplay();
-    userInput(oldz);
+    gameplay();
+    cin >> z;
+    userInput(z);
     //usleep(5000);
   }
   
