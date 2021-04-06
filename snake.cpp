@@ -12,6 +12,8 @@ const char barrier = 178;
 const char fruit = 229;
 bool gameOver;
 
+char oldz;
+
 class position {
 public:
   int x;
@@ -97,20 +99,44 @@ void gameplay()
 */
 
 
+void delay(int seconds)
+{
+    // Converting time into milli_seconds
+    int milliSeconds = 1000 * seconds;
+  
+    // Storing start time
+    clock_t startTime = clock();
+  
+    // looping till required time is not achieved
+    while (clock() < startTime + milliSeconds){
+      ;
+    }
+}
+
 int main()
 {
   char z;
 
   startPosition();
-  userInterface();
-  cin >> z;
   while (gameOver == false)
   {
+    z = false;
+
     userInterface();
-    cin >> z;
+
+    clock_t startTime = clock();
+    cout << oldz;
+
+    while (clock() < startTime + 50){
+      cin >> z;
+      if(z != oldz){
+        oldz = z;
+        break;
+      }
+    }
     // gameplay();
-    userInput(z);
-    usleep(5000);
+    userInput(oldz);
+    //usleep(5000);
   }
   
 }
