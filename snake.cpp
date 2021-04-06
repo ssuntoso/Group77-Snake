@@ -8,6 +8,7 @@ using namespace std;
 const int height = 20;
 const int width = 20;
 const char barrier = 178;
+const char fruit = 229;
 bool gameOver;
 
 class position {
@@ -50,6 +51,9 @@ void userInterface()
       }
       else if (i == current.x && j == current.y) {
         cout << "O";
+      }
+      else if (i == current.fruitx && j == current.fruity) {
+        cout << fruit;
       }
       else if (j == width - 1) {
         cout << barrier;
