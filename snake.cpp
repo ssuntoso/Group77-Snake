@@ -3,11 +3,13 @@
 #include <iomanip>
 #include <stdio.h>
 #include <ctime>
+#include <unistd.h>
 using namespace std;
 
 const int height = 20;
 const int width = 20;
 const char barrier = 178;
+const char fruit = 229;
 bool gameOver;
 
 class position {
@@ -19,15 +21,12 @@ public:
   int score;
 };
 position current;
-enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
-Direction dir;
 
 // a function to setup the game
 void startPosition()
 {
   srand(time(NULL));                // randomized seed
   gameOver = false;
-  dir = STOP;
   current.x = width / 2;
   current.y = height / 2;
   current.fruitx = rand() % width;
@@ -38,7 +37,7 @@ void startPosition()
 // a function to draw the interface
 void userInterface()
 {
-  system("cls");
+  system("clear");
   for (int i = 0; i < width; i++) {
     cout << barrier;
   }
@@ -48,8 +47,11 @@ void userInterface()
       if (j == 0) {
         cout << barrier;
       }
-      else if (i == current.x && j == current.y) {
+      else if (i == current.y && j == current.x) {
         cout << "O";
+      }
+      else if (i == current.fruity && j == current.fruitx) {
+        cout << fruit;
       }
       else if (j == width - 1) {
         cout << barrier;
@@ -63,10 +65,52 @@ void userInterface()
   for (int k = 0; k < width; k++) {
     cout << barrier;
   }
+  cout << endl;
+  cout << endl;
+  cout << endl;
 }
+
+void userInput(char z)
+{
+  if( z == 'a' ){
+    current.x--;
+  }
+  if( z == 'd' ){
+    current.x++;
+  }
+  if( z == 's' ){
+    current.y++;
+  }
+  if( z == 'w' ){
+    current.y--;
+  }
+  if( z == 'x' ){
+    gameOver = true;
+  }
+}
+
+/*
+void gameplay()
+{
+  return 0;
+}
+*/
+
 
 int main()
 {
+  char z;
+
   startPosition();
   userInterface();
+  cin >> z;
+  while (gameOver == false)
+  {
+    userInterface();
+    cin >> z;
+    // gameplay();
+    userInput(z);
+    usleep(5000);
+  }
+  
 }
