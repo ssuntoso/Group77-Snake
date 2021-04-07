@@ -168,7 +168,6 @@ int main()
     std::this_thread::sleep_for(std::chrono::milliseconds(500));
     t1.detach();
     if (!nextz) {
-        userInterface();
         userInput(oldz);
     }
     gameplay();
