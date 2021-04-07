@@ -12,7 +12,11 @@ const char barrier = 'H';
 const char fruit = '*';
 bool gameOver;
 
-int nTail;
+int tail_x[400], tail_y[400];
+
+int totalTail;
+
+#define TIMELIMIT 1; 
 
 class position {
 public:
@@ -31,8 +35,8 @@ void startPosition()
   gameOver = false;
   current.x = width / 2;
   current.y = height / 2;
-  current.fruitx = rand() % width;
-  current.fruity = rand() % height;
+  current.fruitx = rand() % (width-1);
+  current.fruity = rand() % (height-1);
   current.score = 0;
 }
 
@@ -55,11 +59,23 @@ void userInterface()
       else if (i == current.fruity && j == current.fruitx) {
         cout << fruit;
       }
-      else if (j == width - 1) {
+      else
+			{
+				bool print = false;
+				for (int k = 0; k < totalTail + 1; k++)
+				{
+					if (tail_x[k] == j && tail_y[k] == i)
+					{
+						cout << "o";
+						print = true;
+					}
+				}
+				if (!print)
+					cout << " ";
+			}
+
+      if (j == width - 1) {
         cout << barrier;
-      }
-      else {
-            cout << " ";
       }
     }
     cout << endl;
@@ -68,6 +84,7 @@ void userInterface()
     cout << barrier;
   }
   cout << endl;
+  cout << current.score << endl; 
   cout << endl;
   cout << endl;
 }
@@ -86,19 +103,51 @@ void userInput(char z)
   if( z == 'w' ){
     current.y--;
   }
-  if( z == 'x' ){
+  if( z == 'q' ){
     gameOver = true;
   }
 }
 
 void gameplay()
 {
+  int prev_x = tail_x[0];
+	int prev_y = tail_y[0];
+	int prev_2x, prev_2y;
+	tail_x[0] = current.x;
+	tail_y[0] = current.y;
+	for (int i = 1; i < totalTail; i++)
+	{
+		prev_2x = tail_x[i];
+		prev_2y = tail_y[i];
+		tail_x[i] = prev_x;
+		tail_y[i] = prev_y;
+		prev_x = prev_2x;
+		prev_y = prev_2y;
+	}
+
+  if (current.x >= width){
+    current.x = 0;
+  } else if (current.x < 0) {
+    current.x = width - 1;
+  }
+	if (current.y >= height){
+    current.y = 0;
+  } else if (current.y < 0){
+    current.y = height - 1;  
+  }
+
+	for (int i = 1; i < totalTail; i++){
+		if (tail_x[i] == current.x && tail_y[i] == current.y){
+			gameOver = true;
+    }
+  }
+
   if (current.x == current.fruitx && current.y == current.fruity)
 	{
 		current.score += 10;
 		current.fruitx = rand() % width;
 		current.fruity = rand() % height;
-		nTail++;
+		totalTail++;
 	}
 }
 
@@ -110,9 +159,9 @@ int main()
   while (gameOver == false)
   {
     userInterface();
-    gameplay();
     cin >> z;
     userInput(z);
+    gameplay();
     //usleep(5000);
   }
   
