@@ -45,7 +45,7 @@ void startPosition()
 // a function to draw the interface
 void userInterface()
 {
-  system("cls");
+  system("clear");
   for (int i = 0; i < width + 1; i++) {
     cout << barrier;
   }
@@ -165,7 +165,7 @@ int main()
         userInput(nextz);
         oldz = nextz;
     });
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+    this_thread::sleep_for(chrono::milliseconds(1200));
     t1.detach();
     if (!nextz) {
         userInput(oldz);
@@ -174,7 +174,7 @@ int main()
     nextz = 0;
     //usleep(5000);
   }
-  system("cls");
+  system("clear");
   cout << endl;
   cout << setw(16) << "GAMEOVER" << endl;
   cout << setw(20) << "HIGHEST SCORE: " << current.score << endl;
