@@ -10,8 +10,8 @@ using namespace std;
 
 const int height = 20;
 const int width = 20;
-const char barrier = 178;
-const char fruit = 229;
+const char barrier = '#';
+const char fruit = '$';
 bool gameOver;
 
 int tail_x[400], tail_y[400];
@@ -29,6 +29,54 @@ public:
   int score;
 };
 position current;
+
+// function to call menu
+void menu()
+{
+    for (int i = 0; i < width + 1; i++) {
+        cout << barrier;
+    }
+    cout << endl;
+    for (int i = 0; i < height; i++) {
+            if ((i < 6 || i > 11 || i == 9) && i < 18) {
+                for (int j = 0; j < width + 1; j++) {
+                    if (j == 0) {
+                        cout << barrier;
+                    }
+                    else if (j == width) {
+                        cout << barrier << endl;
+                    }
+                    else {
+                        cout << ' ';
+                    }
+                }
+            }
+            else if (i == 6) {
+                cout << "#     ~~~~~~~~      #" << endl;
+            }
+            else if (i == 7) {
+                cout << "#     SNAKE-77      #" << endl;
+            }
+            else if (i == 8) {
+                cout << "#     ~~~~~~~~      #" << endl;
+            }
+            else if (i == 10) {
+                cout << "#    PRESS ENTER    #" << endl;
+            }
+            else if (i == 11) {
+                cout << "#    TO CONTINUE    #" << endl;
+            }
+            else if (i == 18) {
+                cout << "#  W A S D to Move  #" << endl;
+            }
+            else {
+                cout << "# by rafael & sean  #" << endl;
+            }
+    }
+    for (int i = 0; i < width + 1; i++) {
+        cout << barrier;
+    }
+}
 
 // a function to setup the game
 void startPosition()
@@ -151,32 +199,33 @@ void gameplay()
 
 int main()
 {
-  char z, oldz, nextz;
-  startPosition();    // set position on board
-  userInterface();
-  cin >> z;
-  oldz = z;
-  userInput(z);
+	menu();
+	getchar();
+	char z, oldz, nextz;
+	startPosition();    // set position on board
+	userInterface();
+	cin >> z;
+	oldz = z;
+	userInput(z);
 	
-  while (!gameOver){
-    userInterface();
-    thread t1([&](){
-        cin >> nextz;
-        userInput(nextz);
-        oldz = nextz;
-    });
-    this_thread::sleep_for(chrono::milliseconds(1200));
-    t1.detach();
-    if (!nextz) {
-        userInput(oldz);
-    }
-    gameplay();
-    nextz = 0;
-    //usleep(5000);
-  }
-  system("clear");
-  cout << endl;
-  cout << setw(16) << "GAMEOVER" << endl;
-  cout << setw(20) << "HIGHEST SCORE: " << current.score << endl;
-
+	while (!gameOver){
+		userInterface();
+		thread t1([&](){
+			cin >> nextz;
+			userInput(nextz);
+			oldz = nextz;
+		});
+	    	this_thread::sleep_for(chrono::milliseconds(1200));
+	    	t1.detach();
+	    	if (!nextz) {
+			userInput(oldz);
+	    	}
+	    	gameplay();
+	    	nextz = 0;
+	    	//usleep(5000);
+	}
+	system("clear");
+	cout << endl;
+	cout << setw(16) << "GAMEOVER" << endl;
+	cout << setw(20) << "HIGHEST SCORE: " << current.score << endl;
 }
