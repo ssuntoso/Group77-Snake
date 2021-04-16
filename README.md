@@ -36,3 +36,6 @@ A single-player game in which the user inputs an arrow key to move a snake which
 | ✔️ | Dynamic memory management | - Use `new` and `delete` operator to store temporary game state array |
 | ✔️ | File input/output (e.g., for loading/saving game status) | - For loading(extracting and inserting) high score and leaderboard |
 | ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation) or functions will be separated from the main file |
+
+## Remark
+use `$ g++ -pthread -pedantic-errors -std=c++11 snake.cpp -o snake` to compile game in Linux.
