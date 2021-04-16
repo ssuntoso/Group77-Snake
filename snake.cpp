@@ -264,15 +264,30 @@ void gameplay()
 }
 
 bool cmp_player_score(const Player & a, const Player & b) {
-    return (a.score > b.score);   // sort according to id lexicographically
+    if (a.score > b.score) {                // compare score
+        return true;
+    }
+    else if (a.score == b.score) {
+        if (a.playerName < b.playerName) {  // lexicographical order
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }
 
 void printLeaderBoard() {
-  for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter) {
-    cout << iter->playerName;
-    cout << setw(16) << iter->score << endl;
+  cout << endl;
+  cout << setw(17) << "LEADERBOARD" << endl;
+  for (int i = 0; i < players.size(); ++i) {
+    cout << players[i].playerName << setfill('.') << setw(25 - (players[i].playerName).length()) << players[i].score << endl;
   }
-} 
+}
+
 
 int main()
 {
@@ -290,11 +305,11 @@ int main()
     getline(cin, currentPlayer);
     cout << endl;
     cout << endl;
-    cout << setw(16) << "Thank you!" << endl;
-    cout << setw(15) << "Please wait" << endl;
-    cout << setw(20) << "while we are preparing" << endl;
-    cout << setw(15) << "your board" << endl;
-    usleep(5000000);
+    cout << setw(17) << "Thank you!" << endl;
+    cout << setw(18) << "Please wait" << endl;
+    cout << setw(21) << "while we are preparing" << endl;
+    cout << setw(17) << "your board" << endl;
+    usleep(1000000);
 
     char z, oldz, nextz;
     startPosition();    // set position on board
