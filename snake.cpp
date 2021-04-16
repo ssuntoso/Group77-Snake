@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <thread>
 #include <chrono>
+#include <vector>
+#include <fstream>
 using namespace std;
 
 const int height = 20;
@@ -20,6 +22,20 @@ int totalTail;
 
 #define TIMELIMIT 1;
 
+ifstream fin;
+ofstream fout;
+
+struct Player {
+    string playerName;
+    int score;
+    Player(string playerName, int score) {
+        this->playerName = playerName;
+        this->score = score;
+    };
+};
+
+vector<Player> players;
+
 class position {
 public:
   int x;
@@ -29,6 +45,55 @@ public:
   int score;
 };
 position current;
+
+void addScore(const Player& p){
+  players.push_back(p);
+  return;
+}
+
+void openLeaderboard(){
+  fin.open("leaderboard.txt");
+  if(fin.fail()){
+    return;
+  }
+
+  string x;
+  while(getline(fin, x)){
+    string playerName = "", playerScore = "";
+    int i;
+
+    for (i = 0; i < x.length(); i++){
+      if(x[i] == '/' && x[i+1] == '?' ){
+        break;
+      }
+    }
+      
+    playerName = x.substr(0, i);
+    for(i = i + 2; i < x.length(); i++){
+      playerScore += x[i];
+    }
+
+    int int_playerScore = stoi(playerScore);
+
+    Player p(playerName, int_playerScore);
+    addScore(p);
+  }
+}
+
+void storeScore() {
+  fout.open("leaderboard.txt");
+
+  for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter){
+    fout << iter->playerName << "/?" << iter->score << endl;
+  }
+
+  return;
+}
+
+void closeLeaderboard(){
+  fin.close();
+  fout.close();
+}
 
 // function to call menu
 void menu()
@@ -70,7 +135,7 @@ void menu()
                 cout << "#  W A S D to Move  #" << endl;
             }
             else {
-                cout << "# by rafael & sean  #" << endl;
+                cout << "# by Rafael & Sean  #" << endl;
             }
     }
     for (int i = 0; i < width + 1; i++) {
@@ -197,35 +262,86 @@ void gameplay()
 	}
 }
 
+bool cmp_player_score(const Player & a, const Player & b) {
+    return (a.score > b.score);   // sort according to id lexicographically
+}
+
+void printLeaderBoard() {
+  for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter) {
+    cout << iter->playerName;
+    cout << setw(16) << iter->score << endl;
+  }
+} 
+
 int main()
 {
+  string currentPlayer;
+  int stopPlaying = false;
+  char askUser = 'n';
+
+  openLeaderboard();
+
 	menu();
 	getchar();
-	char z, oldz, nextz;
-	startPosition();    // set position on board
-	userInterface();
-	cin >> z;
-	oldz = z;
-	userInput(z);
+  while (stopPlaying == false){
+    system("clear");
+    cout << "Please, input your name!" << endl;
+    getline(cin, currentPlayer);
+    cout << endl;
+    cout << endl;
+    cout << setw(16) << "Thank you!" << endl;
+    cout << setw(15) << "Please wait" << endl;
+    cout << setw(20) << "while we are preparing" << endl;
+    cout << setw(15) << "your board" << endl;
+    usleep(5000000);
+
+    char z, oldz, nextz;
+    startPosition();    // set position on board
+    userInterface();
+    cin >> z;
+    oldz = z;
+    userInput(z);
 	
-	while (!gameOver){
-		userInterface();
-		thread t1([&](){
-			cin >> nextz;
-			userInput(nextz);
-			oldz = nextz;
-		});
-	    	this_thread::sleep_for(chrono::milliseconds(1200));
-	    	t1.detach();
-	    	if (!nextz) {
-			userInput(oldz);
-	    	}
-	    	gameplay();
-	    	nextz = 0;
-	    	//usleep(5000);
-	}
-	system("clear");
-	cout << endl;
-	cout << setw(16) << "GAMEOVER" << endl;
-	cout << setw(20) << "HIGHEST SCORE: " << current.score << endl;
+    while (!gameOver){
+      userInterface();
+      thread t1([&](){
+        cin >> nextz;
+        userInput(nextz);
+        oldz = nextz;
+      });
+          this_thread::sleep_for(chrono::milliseconds(1200));
+          t1.detach();
+          if (!nextz) {
+        userInput(oldz);
+          }
+          gameplay();
+          nextz = 0;
+    }
+    system("clear");
+    cout << endl;
+    cout << setw(16) << "GAMEOVER" << endl;
+
+    Player p(currentPlayer, current.score);
+    addScore(p);
+
+    // sort according to score
+    sort(players.begin(), players.end(), cmp_player_score);
+
+    printLeaderBoard();
+    cout << endl;
+    cout << "Do you want to play again? [y/n]" << endl;
+    cin >> askUser;
+    if (askUser == 'y'){
+      gameOver = false;
+      continue;
+    } else {
+      cout << "Thanks for playing!" << endl;
+      usleep(3000000);
+      stopPlaying = true;
+      break;
+    }
+  }
+  storeScore();
+  closeLeaderboard();
+
 }
