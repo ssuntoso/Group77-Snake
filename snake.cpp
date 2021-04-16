@@ -7,8 +7,10 @@
 #include <thread>
 #include <chrono>
 #include <vector>
-#include <fstream>
 #include <algorithm>
+
+#include "includes/leaderboard.h"
+
 using namespace std;
 
 const int height = 20;
@@ -23,20 +25,6 @@ int totalTail;
 
 #define TIMELIMIT 1;
 
-ifstream fin;
-ofstream fout;
-
-struct Player {
-    string playerName;
-    int score;
-    Player(string playerName, int score) {
-        this->playerName = playerName;
-        this->score = score;
-    };
-};
-
-vector<Player> players;
-
 class position {
 public:
   int x;
@@ -46,55 +34,6 @@ public:
   int score;
 };
 position current;
-
-void addScore(const Player& p){
-  players.push_back(p);
-  return;
-}
-
-void openLeaderboard(){
-  fin.open("leaderboard.txt");
-  if(fin.fail()){
-    return;
-  }
-
-  string x;
-  while(getline(fin, x)){
-    string playerName = "", playerScore = "";
-    int i;
-
-    for (i = 0; i < x.length(); i++){
-      if(x[i] == '/' && x[i+1] == '?' ){
-        break;
-      }
-    }
-      
-    playerName = x.substr(0, i);
-    for(i = i + 2; i < x.length(); i++){
-      playerScore += x[i];
-    }
-
-    int int_playerScore = stoi(playerScore);
-
-    Player p(playerName, int_playerScore);
-    addScore(p);
-  }
-}
-
-void storeScore() {
-  fout.open("leaderboard.txt");
-
-  for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter){
-    fout << iter->playerName << "/?" << iter->score << endl;
-  }
-
-  return;
-}
-
-void closeLeaderboard(){
-  fin.close();
-  fout.close();
-}
 
 // function to call menu
 void menu()
@@ -263,20 +202,7 @@ void gameplay()
 	}
 }
 
-bool cmp_player_score(const Player & a, const Player & b) {
-    return (a.score > b.score);   // sort according to id lexicographically
-}
-
-void printLeaderBoard() {
-  for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter) {
-    cout << iter->playerName;
-    cout << setw(16) << iter->score << endl;
-  }
-} 
-
-int main()
-{
-  string currentPlayer;
+int main(){
   int stopPlaying = false;
   char askUser = 'n';
 
@@ -285,9 +211,12 @@ int main()
 	menu();
 	getchar();
   while (stopPlaying == false){
+    string currentPlayer = "";
     system("clear");
     cout << "Please, input your name!" << endl;
     getline(cin, currentPlayer);
+    getchar();
+    system("clear");
     cout << endl;
     cout << endl;
     cout << setw(16) << "Thank you!" << endl;
@@ -326,7 +255,7 @@ int main()
     addScore(p);
 
     // sort according to score
-    sort(players.begin(), players.end(), cmp_player_score);
+    sortingPlayer();
 
     printLeaderBoard();
     cout << endl;
@@ -335,6 +264,11 @@ int main()
     if (askUser == 'y'){
       gameOver = false;
       continue;
+    } else if (askUser == 'n') {
+      cout << "Thanks for playing!" << endl;
+      usleep(3000000);
+      stopPlaying = true;
+      break;
     } else {
       cout << "Thanks for playing!" << endl;
       usleep(3000000);
