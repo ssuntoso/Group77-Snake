@@ -202,7 +202,8 @@ void gameplay()
 	}
 }
 
-int main(){
+int main()
+{
   int stopPlaying = false;
   char askUser = 'n';
 
@@ -219,11 +220,11 @@ int main(){
     system("clear");
     cout << endl;
     cout << endl;
-    cout << setw(16) << "Thank you!" << endl;
-    cout << setw(15) << "Please wait" << endl;
-    cout << setw(20) << "while we are preparing" << endl;
-    cout << setw(15) << "your board" << endl;
-    usleep(5000000);
+    cout << setw(17) << "Thank you!" << endl;
+    cout << setw(18) << "Please wait" << endl;
+    cout << setw(21) << "while we are preparing" << endl;
+    cout << setw(17) << "your board" << endl;
+    usleep(1000000);
 
     char z, oldz, nextz;
     startPosition();    // set position on board
