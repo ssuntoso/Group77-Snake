@@ -8,6 +8,7 @@
 #include <chrono>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 using namespace std;
 
 const int height = 20;
