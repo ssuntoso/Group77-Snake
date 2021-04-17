@@ -17,7 +17,7 @@ bool gameOver;
 
 int tail_x[400], tail_y[400];
 
-int totalTail;
+int totalTail = 0;
 
 position current;
 
@@ -80,8 +80,8 @@ void startPosition()
   gameOver = false;
   current.x = width / 2;
   current.y = height / 2;
-  current.fruitx = rand() % (width - 1);
-  current.fruity = rand() % (height - 1);
+  current.fruitx = 1 + (rand() % (width - 1));
+  current.fruity = 1 + (rand() % (height - 1));
   current.score = 0;
 }
 
@@ -105,19 +105,19 @@ void userInterface()
         cout << fruit;
       }
       else {
-            bool print = false;
-            for (int k = 0; k < totalTail + 1; k++) {
-                if (tail_x[k] == j && tail_y[k] == i)
-                {
-                    cout << "o";
-                    print = true;
-                }
-            }
-            if (!print)
-                cout << " ";
+        bool print = false;
+        for (int k = 0; k < totalTail + 1; k++) {
+          if (tail_x[k] == j && tail_y[k] == i)
+          {
+            cout << "o";
+            print = true;
+          }
+        }
+        if (!print)
+            cout << " ";
 			}
 
-      if (j == width - 1) {
+      if (j == width-1) {
         cout << barrier;
       }
     }
@@ -194,21 +194,8 @@ void gameplay()
 
 void endMenu() {
   cout << endl;
-  cout << "Do you want to play again? [y/n]" << endl;
-  cin >> askUser;
-	    
-  if (askUser == 'y'){
-    gameOver = false;
-    stopPlaying = false;
-  } else if (askUser == 'n') {
-    cout << "Thanks for playing!" << endl;
-    usleep(3000000);
-    stopPlaying = true;
-  } else {
-    cout << "Thanks for playing!" << endl;
-    usleep(3000000);
-    stopPlaying = true;
-  }
+  cout << "Thanks for playing!" << endl;
+  cout << "Press Ctrl + C to exit" << endl; 
 }
 
 bool bool_game_over() {
@@ -217,8 +204,4 @@ bool bool_game_over() {
 
 int finalScore() {
   return current.score;
-}
-
-bool bool_stop_playing() {
-  return stopPlaying;
 }
