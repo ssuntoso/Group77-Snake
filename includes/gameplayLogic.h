@@ -1,3 +1,6 @@
+#ifndef GAMEPLAYLOGIC_H
+#define GAMEPLAYLOGIC_H
+
 #include <iostream>
 
 using namespace std;
@@ -13,6 +16,8 @@ public:
 
 void menu();
 
+void loading();
+
 void startPosition();
 
 void userInterface();
@@ -26,3 +31,5 @@ void endMenu();
 bool bool_game_over();
 
 int finalScore();
+
+#endif

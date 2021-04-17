@@ -13,30 +13,32 @@ ofstream fout;
 
 vector<Player> players;
 
-void addScore(const Player& p){
+void addScore(const Player& p)
+{
     players.push_back(p);
     return;
 }
 
-void openLeaderboard(){
+void openLeaderboard()
+{
     fin.open("leaderboard.txt");
-    if(fin.fail()){
+    if (fin.fail()) {
         return;
     }
 
     string x;
-    while(getline(fin, x)){
+    while (getline(fin, x)) {
         string playerName = "", playerScore = "";
         int i;
 
-        for (i = 0; i < x.length(); i++){
-            if(x[i] == '/' && x[i+1] == '?' ){
+        for (i = 0; i < x.length(); i++) {
+            if (x[i] == '/' && x[i+1] == '?' ) {
                 break;
             }
         }
         
         playerName = x.substr(0, i);
-        for(i = i + 2; i < x.length(); i++){
+        for (i = i + 2; i < x.length(); i++) {
             playerScore += x[i];
         }
 
@@ -47,30 +49,38 @@ void openLeaderboard(){
     }
 }
 
-void storeScore() {
+void storeScore()
+{
     fout.open("leaderboard.txt");
 
-    for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter){
+    for (vector<Player>::iterator iter = players.begin() ; iter != players.end(); ++iter) {
         fout << iter->playerName << "/?" << iter->score << endl;
     }
 
     return;
 }
 
-void printLeaderBoard() {
+void printLeaderBoard()
+{
     cout << endl;
     cout << setw(17) << "LEADERBOARD" << endl;
     for (int i = 0; i < players.size(); ++i) {
         cout << players[i].playerName << setfill('.') << setw(25 - (players[i].playerName).length()) << players[i].score << endl;
     }
+    
+    return;
 } 
 
-void closeLeaderboard(){
+void closeLeaderboard()
+{
     fin.close();
     fout.close();
+
+    return;
 }
 
-bool cmp_player_score(const Player & a, const Player & b) {
+bool cmp_player_score(const Player & a, const Player & b)
+{
     if (a.score > b.score) {                // compare score
         return true;
     }
@@ -87,6 +97,9 @@ bool cmp_player_score(const Player & a, const Player & b) {
     }
 }
 
-void sortingPlayer(){
+void sortingPlayer()
+{
     sort(players.begin(), players.end(), cmp_player_score);
+
+    return;
 }

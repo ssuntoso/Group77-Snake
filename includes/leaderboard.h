@@ -1,4 +1,8 @@
+#ifndef LEADERBOARD_H
+#define LEADERBOARD_H
+
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -25,3 +29,4 @@ bool cmp_player_score(const Player & a, const Player & b);
 
 void sortingPlayer();
 
+#endif

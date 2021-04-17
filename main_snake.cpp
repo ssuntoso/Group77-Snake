@@ -26,18 +26,13 @@ int main()
   
   string currentPlayer;
   system("clear");
-  cout << "Please, input your name!" << endl;
+  cout << "Input your name: ";
   getline(cin, currentPlayer);
+  cout << endl;
   system("clear");
-  cout << endl;
-  cout << endl;
-  cout << setw(17) << "Thank you!" << endl;
-
-  cout << endl;
-  cout << endl;
-  cout << setw(18) << "Please wait" << endl;
-  cout << setw(21) << "while we are preparing" << endl;
-  cout << setw(17) << "your board" << endl;
+  
+  loading();
+  
   usleep(1000000);
   char z, oldz, nextz;
   startPosition();    // set position on board

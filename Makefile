@@ -1,10 +1,9 @@
 # use `make all` command for compile all
 
-target	:= snake	
-objs	:= main_snake.o leaderboard.o gameplayLogic.o
-
 CC		:= g++
 CFLAGS	:= -pthread -pedantic-errors -std=c++11
+target	:= snake	
+objs	:= main_snake.o leaderboard.o gameplayLogic.o
 
 INCLUDES_DIR := ./includes
 
@@ -30,6 +29,6 @@ clean:
 	rm -f $(wildcard *.o) $(target) $(tgz)
 
 tar:
-	tar -czvf $(tgz) *.cpp *.h
+	tar -czvf $(tgz) *.cpp *.h *.o
 
 .PHONY: clean tar

@@ -1,3 +1,5 @@
+// This program is the logic of the game
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -28,49 +30,107 @@ char askUser;
 // function to call menu
 void menu()
 {
-    for (int i = 0; i < width + 1; i++) {
-        cout << barrier;
+  for (int i = 0; i < width + 1; i++) {
+      cout << barrier;
+  }
+  cout << endl;
+  for (int i = 0; i < height; i++) {
+    if ((i < 6 || i > 11 || i == 9) && i < 18) {
+      for (int j = 0; j < width + 1; j++) {
+        if (j == 0) {
+          cout << barrier;
+        }
+        else if (j == width) {
+          cout << barrier << endl;
+        }
+        else {
+          cout << ' ';
+        }
+      }
     }
-    cout << endl;
-    for (int i = 0; i < height; i++) {
-            if ((i < 6 || i > 11 || i == 9) && i < 18) {
-                for (int j = 0; j < width + 1; j++) {
-                    if (j == 0) {
-                        cout << barrier;
-                    }
-                    else if (j == width) {
-                        cout << barrier << endl;
-                    }
-                    else {
-                        cout << ' ';
-                    }
-                }
-            }
-            else if (i == 6) {
-                cout << "#     ~~~~~~~~      #" << endl;
-            }
-            else if (i == 7) {
-                cout << "#     SNAKE-77      #" << endl;
-            }
-            else if (i == 8) {
-                cout << "#     ~~~~~~~~      #" << endl;
-            }
-            else if (i == 10) {
-                cout << "#    PRESS ENTER    #" << endl;
-            }
-            else if (i == 11) {
-                cout << "#    TO CONTINUE    #" << endl;
-            }
-            else if (i == 18) {
-                cout << "#  W A S D to Move  #" << endl;
-            }
-            else {
-                cout << "# by Rafael & Sean  #" << endl;
-            }
+    else if (i == 6) {
+      cout << "#     ~~~~~~~~      #" << endl;
     }
-    for (int i = 0; i < width + 1; i++) {
-        cout << barrier;
+    else if (i == 7) {
+      cout << "#     SNAKE-77      #" << endl;
     }
+    else if (i == 8) {
+      cout << "#     ~~~~~~~~      #" << endl;
+    }
+    else if (i == 10) {
+      cout << "#    PRESS ENTER    #" << endl;
+    }
+    else if (i == 11) {
+      cout << "#    TO CONTINUE    #" << endl;
+    }
+    else if (i == 18) {
+      cout << "#  W A S D to Move  #" << endl;
+    }
+    else {
+      cout << "# by Rafael & Sean  #" << endl;
+    }
+  }
+  for (int i = 0; i < width + 1; i++) {
+    cout << barrier;
+  }
+
+  return;
+}
+
+// function to call loading
+void loading()
+{
+  for (int i = 0; i < width + 1; i++) {
+      cout << barrier;
+  }
+  cout << endl;
+  for (int i = 0; i < height; i++) {
+    if ((i < 6 || i > 13 || i == 9) && i < 18) {
+      for (int j = 0; j < width + 1; j++) {
+        if (j == 0) {
+          cout << barrier;
+        }
+        else if (j == width) {
+          cout << barrier << endl;
+        }
+        else {
+          cout << ' ';
+        }
+      }
+    }
+    else if (i == 6) {
+      cout << "#    ~~~~~~~~~~     #" << endl;
+    }
+    else if (i == 7) {
+      cout << "#    LOADING...     #" << endl;
+    }
+    else if (i == 8) {
+      cout << "#    ~~~~~~~~~~     #" << endl;
+    }
+    else if (i == 10) {
+      cout << "#       press       #" << endl;
+    }
+    else if (i == 11) {
+      cout << "#  w a s d in half  #" << endl;
+    }
+    else if (i == 12) {
+      cout << "#     a second      #" << endl;
+    }
+    else if (i == 13) {
+      cout << "#    then enter     #" << endl;
+    }
+    else if (i == 18) {
+      cout << "#   GRAB THE $$$    #" << endl;
+    }
+    else {
+      cout << "#      <><><>       #" << endl;
+    }
+  }
+  for (int i = 0; i < width + 1; i++) {
+    cout << barrier;
+  }
+
+  return;
 }
 
 // a function to setup the game
