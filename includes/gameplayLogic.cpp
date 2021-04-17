@@ -199,6 +199,7 @@ void endMenu() {
 	    
   if (askUser == 'y'){
     gameOver = false;
+    stopPlaying = false;
   } else if (askUser == 'n') {
     cout << "Thanks for playing!" << endl;
     usleep(3000000);

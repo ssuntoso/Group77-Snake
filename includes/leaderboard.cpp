@@ -63,6 +63,8 @@ void printLeaderBoard() {
     for (int i = 0; i < players.size(); ++i) {
         cout << players[i].playerName << setfill('.') << setw(25 - (players[i].playerName).length()) << players[i].score << endl;
     }
+    cout << endl;
+    cout << "Press enter to continue" << endl;
 } 
 
 void closeLeaderboard(){

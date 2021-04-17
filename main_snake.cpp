@@ -21,16 +21,21 @@ int main()
 
   menu();
   getchar();
+
+  // loop the game until user exit after game end
+  
+  string currentPlayer = "";
+  system("clear");
+  cout << "Please, input your name!" << endl;
+  getline(cin, currentPlayer);
+  system("clear");
+  cout << endl;
+  cout << endl;
+  cout << setw(17) << "Thank you!" << endl;
+
   while (bool_stop_playing() == false){
-    string currentPlayer = "";
-    system("clear");
-    cout << "Please, input your name!" << endl;
-    getline(cin, currentPlayer);
-    getchar();
-    system("clear");
     cout << endl;
     cout << endl;
-    cout << setw(17) << "Thank you!" << endl;
     cout << setw(18) << "Please wait" << endl;
     cout << setw(21) << "while we are preparing" << endl;
     cout << setw(17) << "your board" << endl;
@@ -43,7 +48,7 @@ int main()
     oldz = z;
     userInput(z);
 	
-    while (bool_game_over() == false){
+    while (true){
       userInterface();
       thread t1([&](){
         cin >> nextz;
@@ -57,27 +62,27 @@ int main()
       }
       gameplay();
       nextz = 0;
+      if (bool_game_over()){
+        break;
+      }
     }
-	    
+	  
+    // gameover screen
     system("clear");
     cout << endl;
     cout << setw(16) << "GAMEOVER" << endl;
-    cout << currentPlayer << endl;
 
     Player p(currentPlayer, finalScore());
     addScore(p);
-
-    // sort according to score
+    // sort according to score and lexicographical order
     sortingPlayer();
-
     printLeaderBoard();
-	    
+    getchar();
     endMenu();
   }
 
   storeScore();
-	
   closeLeaderboard();
-	
+
   return 0;
 }

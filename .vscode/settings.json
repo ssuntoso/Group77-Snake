@@ -7,6 +7,7 @@
         "ostream": "cpp",
         "string": "cpp",
         "filesystem": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "ios": "cpp"
     }
 }
