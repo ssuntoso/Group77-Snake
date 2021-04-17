@@ -17,14 +17,11 @@ using namespace std;
 
 int main()
 {
-  int stopPlaying = false;
-  char askUser = 'n';
-
   openLeaderboard();
 
   menu();
   getchar();
-  while (stopPlaying == false){
+  while (bool_stop_playing()){
     string currentPlayer = "";
     system("clear");
     cout << "Please, input your name!" << endl;

@@ -27,4 +27,6 @@ void endMenu();
 
 bool bool_game_over();
 
+bool bool_stop_playing();
+
 int finalScore();

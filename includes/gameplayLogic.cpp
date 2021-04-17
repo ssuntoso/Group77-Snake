@@ -21,6 +21,10 @@ int totalTail;
 
 position current;
 
+int stopPlaying = false;
+
+char askUser;
+
 // function to call menu
 void menu()
 {
@@ -215,4 +219,8 @@ bool bool_game_over() {
 
 int finalscore() {
   return current.score;
+}
+
+bool bool_stop_playing() {
+  return stopPlaying;
 }

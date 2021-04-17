@@ -15,5 +15,5 @@ gameplayLogic.o: ./includes/gameplayLogic.cpp
 leaderboard.o: ./includes/leaderboard.cpp
 	$(CCFLAGSVER) -c ./includes/leaderboard.cpp
 
-Clean:
+clean:
 	rm *.o snake
