@@ -21,8 +21,6 @@ void userInput(char z);
 
 void gameplay();
 
-void gameOver();
-
 void endMenu();
 
 bool bool_game_over();
