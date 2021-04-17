@@ -4,7 +4,7 @@ CVER		:= -std=c++11
 CCFLAGSVER	:= $(CC) $(CFLAGS) $(CVERSION)
 
 snake: main_snake.o leaderboard.o gameplayLogic.o 
-	$(CCFLAGSVER) snake.o leaderboard.o gameplayLogic.o -o snake
+	$(CCFLAGSVER) main_snake.o leaderboard.o gameplayLogic.o -o snake
 
 main_snake.o: main_snake.cpp
 	$(CCFLAGSVER) -c main_snake.cpp
