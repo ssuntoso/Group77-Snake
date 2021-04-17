@@ -24,3 +24,4 @@ void closeLeaderboard();
 bool cmp_player_score(const Player & a, const Player & b);
 
 void sortingPlayer();
+

@@ -6,6 +6,7 @@
         "vector": "cpp",
         "ostream": "cpp",
         "string": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "thread": "cpp"
     }
 }

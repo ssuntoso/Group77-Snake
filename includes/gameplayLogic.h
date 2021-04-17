@@ -11,6 +11,8 @@ public:
   int score;
 };
 
+void menu();
+
 void startPosition();
 
 void userInterface();
@@ -18,3 +20,11 @@ void userInterface();
 void userInput(char z);
 
 void gameplay();
+
+void gameOver();
+
+void endMenu();
+
+bool bool_game_over();
+
+int finalScore();

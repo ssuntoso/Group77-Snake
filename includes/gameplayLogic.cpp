@@ -187,3 +187,32 @@ void gameplay()
 		totalTail++;
 	}
 }
+
+void endMenu() {
+  cout << endl;
+  cout << "Do you want to play again? [y/n]" << endl;
+  cin >> askUser;
+	    
+  if (askUser == 'y'){
+    gameOver = false;
+    continue;
+  } else if (askUser == 'n') {
+    cout << "Thanks for playing!" << endl;
+    usleep(3000000);
+    stopPlaying = true;
+    break;
+  } else {
+    cout << "Thanks for playing!" << endl;
+    usleep(3000000);
+    stopPlaying = true;
+    break;
+  }
+}
+
+bool bool_game_over() {
+  return gameOver;
+}
+
+int finalscore() {
+  return current.score;
+}
