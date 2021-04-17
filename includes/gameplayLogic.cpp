@@ -214,7 +214,7 @@ bool bool_game_over() {
   return gameOver;
 }
 
-int finalscore() {
+int finalScore() {
   return current.score;
 }
 

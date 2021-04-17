@@ -21,7 +21,7 @@ int main()
 
   menu();
   getchar();
-  while (bool_stop_playing()){
+  while (bool_stop_playing() == false){
     string currentPlayer = "";
     system("clear");
     cout << "Please, input your name!" << endl;

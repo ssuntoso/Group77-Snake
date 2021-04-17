@@ -30,14 +30,14 @@ void openLeaderboard(){
         int i;
 
         for (i = 0; i < x.length(); i++){
-        if(x[i] == '/' && x[i+1] == '?' ){
-            break;
-        }
+            if(x[i] == '/' && x[i+1] == '?' ){
+                break;
+            }
         }
         
         playerName = x.substr(0, i);
         for(i = i + 2; i < x.length(); i++){
-        playerScore += x[i];
+            playerScore += x[i];
         }
 
         int int_playerScore = stoi(playerScore);
