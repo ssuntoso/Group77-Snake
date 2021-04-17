@@ -1,24 +1,35 @@
-CC			    := g++
-CFLAGS		  := -pthread -pedantic-errors
-CVER		    := -std=c++11
-CCFLAGSVER	:= $(CC) $(CFLAGS) $(CVERSION)
+# use `make all` command for compile all
 
-main_snake.o: main_snake.cpp
-	$(CCFLAGSVER) -c main_snake.cpp
+target	:= snake	
+objs	:= main_snake.o leaderboard.o gameplayLogic.o
 
-gameplayLogic.o: ./includes/gameplayLogic.cpp
-	$(CCFLAGSVER) -c ./includes/gameplayLogic.cpp
+CC		:= g++
+CFLAGS	:= -pthread -pedantic-errors -std=c++11
 
-leaderboard.o: ./includes/leaderboard.cpp
-	$(CCFLAGSVER) -c ./includes/leaderboard.cpp
+INCLUDES_DIR := ./includes
 
-snake: main_snake.o leaderboard.o gameplayLogic.o 
-	$(CCFLAGSVER) main_snake.o leaderboard.o gameplayLogic.o -o snake
+all: $(target)
+
+# run this command multiple time for 
+# all .cpp and .h file in includes folder
+%.o: $(INCLUDES_DIR)/%.cpp $(INCLUDES_DIR)/%.h
+	$(CC) $(CFLAGS) -c $<
+
+# run this command multiple time for 
+# all .cpp in main folder 
+# and .h file in includes folder
+%.o: %.cpp $(wildcard $(INCLUDES_DIR)/*.h)
+	$(CC) $(CFLAGS) -c $<
+
+snake: $(objs) 
+	$(CC) $(CFLAGS) $^ -o $@
+
+tgz		:= $(wildcard *.tgz)
 
 clean:
-	rm -f *.o snake snake.tgz
+	rm -f $(wildcard *.o) $(target) $(tgz)
 
 tar:
-	tar -czvf snake.tgz *.cpp *.h
+	tar -czvf $(tgz) *.cpp *.h
 
 .PHONY: clean tar
