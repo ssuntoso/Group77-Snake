@@ -18,7 +18,6 @@ using namespace std;
 int main()
 {
   openLeaderboard();
-  userInterface();
 
   menu();
   getchar();
