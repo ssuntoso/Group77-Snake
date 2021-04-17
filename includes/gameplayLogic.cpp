@@ -199,17 +199,14 @@ void endMenu() {
 	    
   if (askUser == 'y'){
     gameOver = false;
-    continue;
   } else if (askUser == 'n') {
     cout << "Thanks for playing!" << endl;
     usleep(3000000);
     stopPlaying = true;
-    break;
   } else {
     cout << "Thanks for playing!" << endl;
     usleep(3000000);
     stopPlaying = true;
-    break;
   }
 }
 
