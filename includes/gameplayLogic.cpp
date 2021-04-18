@@ -168,7 +168,7 @@ void userInterface()
       }
       else {
         bool print = false;
-        for (int k = 0; k < totalTail + 1; k++) {
+        for (int k = 0; k < totalTail; k++) {
           if (tail_x[k] == j && tail_y[k] == i)
           {
             cout << "o";
@@ -188,6 +188,7 @@ void userInterface()
   for (int k = 0; k < width + 1; k++) {
     cout << barrier;
   }
+  cout << endl;
   cout << endl;
   cout << "Score: " << current.score << endl;
 }
