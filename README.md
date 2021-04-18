@@ -38,4 +38,4 @@ A single-player game in which the user inputs an arrow key to move a snake which
 | ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation) or functions will be separated from the main file |
 
 ## Remark
-use `$ g++ -pthread -pedantic-errors -std=c++11 snake.cpp -o snake` to compile game in Linux.
+use `make all` to compile game in Linux and `make clean` to remove all compiled item.

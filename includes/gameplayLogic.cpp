@@ -130,6 +130,8 @@ void loading()
     cout << barrier;
   }
 
+  cout << endl;
+
   return;
 }
 
