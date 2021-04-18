@@ -248,8 +248,8 @@ void gameplay()
   if (current.x == current.fruitx && current.y == current.fruity)
 	{
 		current.score += 10;
-		current.fruitx = rand() % (width - 1);
-		current.fruity = rand() % (height - 1);
+		current.fruitx = 1 + (rand() % (width - 1));
+		current.fruity = 1 + (rand() % (height - 1));
 		totalTail++;
 	}
 }
