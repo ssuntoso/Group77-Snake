@@ -102,8 +102,8 @@ void printLeaderBoard()
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else {
-            cout << "#        YOU        #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#     you beat      #" << endl;
+            cout << "#   the HIGHSCORE   #" << endl;
         }
     } else {
         cout << "#  you didn't beat  #" << endl;
