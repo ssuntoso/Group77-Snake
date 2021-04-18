@@ -33,7 +33,7 @@ int main()
   
   loading();
   
-  usleep(1000000);
+  usleep(2000000);
   char z, oldz, nextz;
   startPosition();    // set position on board
   userInterface();
@@ -62,12 +62,9 @@ int main()
 	
   // gameover screen
   system("clear");
-  cout << endl;
-  cout << setw(16) << "GAMEOVER" << endl;
   Player p(currentPlayer, finalScore());
   addScore(p);
-  // sort according to score and lexicographical order
-  sortingPlayer();
+
   printLeaderBoard();
   storeScore();
   closeLeaderboard();
