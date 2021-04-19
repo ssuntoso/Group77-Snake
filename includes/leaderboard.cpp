@@ -81,8 +81,24 @@ void printLeaderBoard()
         }
     }
     if (highestscore) {
-        if ((players.back().playerName).length() > 4) {
-            cout << "#       " << (players.back().playerName).substr(0, 5) << "       #" << endl;
+        if (players.back().playerName == "Player"){
+            cout << "#     you beat      #" << endl;
+            cout << "#   the HIGHSCORE   #" << endl;
+        }
+        else if ((players.back().playerName).length() > 7) {
+            cout << "#     " << (players.back().playerName).substr(0, 8) << "      #" << endl;
+            cout << "# beat the HIGHSCORE#" << endl;
+        }
+        else if ((players.back().playerName).length() == 7) {
+            cout << "#      " << players.back().playerName << "      #" << endl;
+            cout << "# beat the HIGHSCORE#" << endl;
+        }
+        else if ((players.back().playerName).length() == 6) {
+            cout << "#      " << players.back().playerName << "       #" << endl;
+            cout << "# beat the HIGHSCORE#" << endl;
+        }
+        else if ((players.back().playerName).length() == 5) {
+            cout << "#       " << players.back().playerName << "       #" << endl;
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else if ((players.back().playerName).length() == 4) {
@@ -101,10 +117,6 @@ void printLeaderBoard()
             cout << "#         " << players.back().playerName << "         #" << endl;
             cout << "# beat the HIGHSCORE#" << endl;
         }
-        else {
-            cout << "#     you beat      #" << endl;
-            cout << "#   the HIGHSCORE   #" << endl;
-        }
     } else {
         cout << "#  you didn't beat  #" << endl;
         cout << "#   the HIGHSCORE   #" << endl;
@@ -113,10 +125,16 @@ void printLeaderBoard()
     cout << "#    LEADERBOARD    #" << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~#" << endl;
     sortingPlayer();
-    for (int i = 0; i < 13; ++i) {      // top 13 leaderboard to fit the interface
-        cout << '#' << (players[i].playerName).substr(0, 5) << setfill('.')
-                << setw(19 - (((players[i].playerName).length() < 6)? (players[i].playerName).length() : 5))
-                << players[i].score << '#' << endl;
+    for (int i = 0; i < players.size() && i < 13; ++i) {      // top 13 leaderboard to fit the interface
+        int interfacefit = 0;
+        if ((players[i].playerName).length() < 9) {
+            interfacefit = (players[i].playerName).length();
+        }
+        else {
+            interfacefit = 8;
+        }
+        cout << '#' << (players[i].playerName).substr(0, 8) << setfill('.')
+                << setw(19 - interfacefit) << players[i].score << '#' << endl;
     }
     cout << "#####################" << endl;
 

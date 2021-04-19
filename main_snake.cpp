@@ -28,6 +28,9 @@ int main()
   system("clear");
   cout << "Input your name: ";
   getline(cin, currentPlayer);
+  if (currentPlayer.empty()) {
+    currentPlayer = "Player";
+  }
   cout << endl;
   system("clear");
   
