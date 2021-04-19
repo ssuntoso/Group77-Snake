@@ -19,7 +19,7 @@ bool gameOver;
 
 int tail_x[400], tail_y[400];
 
-int totalTail = 0;
+int totalTail = 1;
 
 position current;
 
