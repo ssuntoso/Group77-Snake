@@ -90,15 +90,15 @@ void printLeaderBoard()
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else if ((players.back().playerName).length() == 3) {
-            cout << "#       " << players.back().playerName << "         #" << endl;
+            cout << "#        " << players.back().playerName << "        #" << endl;
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else if ((players.back().playerName).length() == 2) {
-            cout << "#       " << players.back().playerName << "          #" << endl;
+            cout << "#        " << players.back().playerName << "         #" << endl;
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else if ((players.back().playerName).length() == 1) {
-            cout << "#       " << players.back().playerName << "           #" << endl;
+            cout << "#         " << players.back().playerName << "         #" << endl;
             cout << "# beat the HIGHSCORE#" << endl;
         }
         else {
