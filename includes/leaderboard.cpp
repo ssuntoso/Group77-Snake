@@ -1,4 +1,22 @@
-// This program is for leaderboard functions
+/*
+ * Games Title  : SNAKE
+ * Author       : Kwan, Rafael Matthew Susanto (3035742425)
+ *                Suntoso, Sean Michael (3035742437)
+ * Group        : 77
+ * 
+ * This cpp file is part of COMP2113 final project SNAKE.
+ * 
+ * This program containing function required to process the game
+ * score leaderboard and store it in a file and function required
+ * after the game.
+ * 
+ * requiered files  : 
+ * ./includes/gameplayLogic.cpp
+ * ./includes/gameplayLogic.h 
+ * ./includes/leaderboard.cpp
+ * ./includes/leaderboard.h
+ * Makefile
+ */
 
 #include <iostream>
 #include <fstream>
@@ -6,6 +24,7 @@
 #include <string>
 #include <iomanip> 
 #include <algorithm>
+
 #include "leaderboard.h"
 
 using namespace std;
@@ -15,12 +34,17 @@ ofstream fout;
 
 vector<Player> players;
 
+// add player score to vector players
 void addScore(const Player& p)
 {
     players.push_back(p);
     return;
 }
 
+// open leaderboard.txt if exist. 
+// If not, it will return. 
+// If yes, it will get the name and previous players
+// scores and store it to vector players
 void openLeaderboard()
 {
     fin.open("leaderboard.txt");
@@ -33,24 +57,35 @@ void openLeaderboard()
         string playerName = "", playerScore = "";
         int i;
 
+        // detecting "/?" that separate players name and score
+        // and break when it find "/?"
         for (i = 0; i < x.length(); i++) {
             if (x[i] == '/' && x[i+1] == '?' ) {
                 break;
             }
         }
         
+        // get player name by using the i obtain before
         playerName = x.substr(0, i);
+
+        // using previous i, add 2 ("/?") is 2 character 
+        // get the score digit by digit until end of x.                
         for (i = i + 2; i < x.length(); i++) {
             playerScore += x[i];
         }
-
+        
+        // change string to integer 
         int int_playerScore = stoi(playerScore);
 
+        // add players and score to vector players
         Player p(playerName, int_playerScore);
         addScore(p);
     }
 }
 
+
+// store score obtain previously and new score recorded 
+// by iterating vector players and write to leaderboard.txt
 void storeScore()
 {
     fout.open("leaderboard.txt");
@@ -62,6 +97,8 @@ void storeScore()
     return;
 }
 
+// sort vector players according to the score in an descending order
+// and according to lexicographical order if players have the same score
 void sortingPlayer()
 {
     sort(players.begin(), players.end(), cmp_player_score);
@@ -146,6 +183,18 @@ void printLeaderBoard()
     return;
 }
 
+// print the final message to thank player and ask him/her
+// to hit Ctrl + C
+void endMenu() {
+  cout << endl;
+  cout << "Thanks for playing!" << endl;
+  cout << "Press Ctrl + C to exit" << endl; 
+
+  // pause the program until player hit Ctrl + C
+  cin.get();
+}
+
+// close leaderboard.txt
 void closeLeaderboard()
 {
     fin.close();

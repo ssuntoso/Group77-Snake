@@ -1,24 +1,47 @@
-// This program is the logic of the game
+/*
+ * Games Title  : SNAKE
+ * Author       : Kwan, Rafael Matthew Susanto (3035742425)
+ *                Suntoso, Sean Michael (3035742437)
+ * Group        : 77
+ * 
+ * This cpp file is part of COMP2113 final project SNAKE.
+ * 
+ * This program is the logic of the game. containing function
+ * required during the game.
+ * 
+ * requiered files  : 
+ * ./includes/gameplayLogic.cpp
+ * ./includes/gameplayLogic.h 
+ * ./includes/leaderboard.cpp
+ * ./includes/leaderboard.h
+ * Makefile
+ */
 
 #include <iostream>
 #include <string>
 #include <iomanip>
-#include <stdio.h>
 #include <ctime>
-#include <unistd.h>
 #include <algorithm>
+
+#include <unistd.h>
+#include <stdio.h>
+
 #include "gameplayLogic.h"
 
 using namespace std;
 
-const int height = 22;
+// height and width set to 22 since it is also 
+// include the barrier at left, right, top and bottom
+const int height = 22;        
 const int width = 22;
+
 const char barrier = '#';
 const char fruit = '$';
 bool gameOver;
 
 int tail_x[400], tail_y[400];
 
+// set to one since the first tail will print under the snake head
 int totalTail = 1;
 
 position current;
@@ -208,38 +231,47 @@ void userInterface()
   }
 }
 
+
+// control the snake from user input by 
+// add or subtract current x and y by 1
+// and change the state to gameover if 
+// player input `q`.
 void userInput(char z)
 {
-  if( z == 'a' || z == 'A'){
+  if( z == 'a' || z == 'A'){    // go left -> subtract x by 1
     current.x--;
   }
-  if( z == 'd' || z == 'D' ){
+  if( z == 'd' || z == 'D' ){   // go right -> add x by 1
     current.x++;
   }
-  if( z == 's' || z == 'S' ){
+  if( z == 's' || z == 'S' ){   // go down -> subtract y by 1
     current.y++;
   }
-  if( z == 'w' || z == 'W'){
+  if( z == 'w' || z == 'W'){    // go up -> add x by 1
     current.y--;
   }
-  if( z == 'q' || z == 'Q'){
+  if( z == 'q' || z == 'Q'){     // end the game
     gameOver = true;
   }
 }
 
+
+// this function check snake head x and y possition 
+// and display according to the rules
 void gameplay()
 {
-  if (current.x >= width - 1){
-    current.x = 1;
-  }
-  else if (current.x < 1) {
-    current.x = width - 2;
+  // if the snake reach the end of the playing area
+  if (current.x >= width - 1){      
+    current.x = 1;                  // on the right, it will reset x to 1
+  } 
+  else if (current.x < 1) {       
+    current.x = width - 2;          // on the left, it will reset x to the right side
   }
   if (current.y >= height - 1){
-    current.y = 1;
+    current.y = 1;                  // on the bottom, it will reset y to 1
   }
   else if (current.y < 1){
-    current.y = height - 2;
+    current.y = height - 2;         // on the top, it will reset y to bottom
   }
 
   int prev_x = tail_x[0];
@@ -248,8 +280,11 @@ void gameplay()
 	tail_x[0] = current.x;
 	tail_y[0] = current.y;
   
-	for (int i = 1; i < totalTail; i++)
-	{
+  // print snake tail according to totalTail
+  // print it following the snake head by obtaining 
+  // the previous x and y of the snake head location
+  // and store it in tail_x and tail_y array
+	for (int i = 1; i < totalTail; i++) {
 		prev_2x = tail_x[i];
 		prev_2y = tail_y[i];
 		tail_x[i] = prev_x;
@@ -258,24 +293,25 @@ void gameplay()
 		prev_y = prev_2y;
 	}
 
+  // this condition will check if the snake head hit its body
+  // by compare snake head location with location inside the 
+  // tail_x and tail_y array. if so, the gameOver variable set
+  // to true and end the game.
 	for (int i = 1; i < totalTail; i++){
 		if (tail_x[i] == current.x && tail_y[i] == current.y){
 			gameOver = true;
     }
   }
 
+  // check the snake head location and compare it to the fruit($)
+  // location. if it is the same, it mean that the snake grabbed 
+  // the $
   if (current.x == current.fruitx && current.y == current.fruity)
 	{
-		current.score += 10;
-		setFruitPosition();
-		totalTail++;
+		current.score += 10;    // add 10$ to current score
+		setFruitPosition();     // set $ to different location on the play area
+		totalTail++;            // grow the tail by add 1
 	}
-}
-
-void endMenu() {
-  cout << endl;
-  cout << "Thanks for playing!" << endl;
-  cout << "Press Ctrl + C to exit" << endl; 
 }
 
 bool bool_game_over() {
