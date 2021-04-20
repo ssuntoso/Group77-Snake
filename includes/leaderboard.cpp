@@ -126,8 +126,8 @@ void printLeaderBoard()
     }
     cout << '#' << setw(21) << '#' << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
-    cout << '#' << setw(21) << '#' << endl;
-    cout << "#     LEADERBOARD    #" << endl;
+    cout << '#   TOP 10 RICHEST   #' << endl;
+    cout << "#    LEADERBOARD     #" << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
     sortingPlayer();
     for (int i = 0; i < players.size() && i < 10; ++i) {      // top 10 leaderboard to fit the interface

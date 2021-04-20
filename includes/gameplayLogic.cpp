@@ -168,10 +168,10 @@ void userInterface()
   cout << endl;
   for (int i = 0; i < height; i++) {
     if (i == 0){
-      cout << "#### Grab the $!! ####";
+      cout << "#### Grab the $$$ ####";
     }
     if (i == height - 1){
-      cout << "####" << " Score:" << setw(6) << current.score << " " << "####";
+      cout << "### " << "Account:"  << setw(5) << current.score << "$ ###";
     } else {
       for (int j = 0; j < width; j++) { 
         if (j == 0 && i != 0) {
@@ -206,9 +206,6 @@ void userInterface()
   for (int k = 0; k < width; k++) {
     cout << barrier;
   }
-  cout << endl;
-  cout << endl;
-  cout << "Score: " << current.score << endl;
 }
 
 void userInput(char z)

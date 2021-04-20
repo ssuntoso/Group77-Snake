@@ -8,6 +8,7 @@
         "string": "cpp",
         "filesystem": "cpp",
         "thread": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "iomanip": "cpp"
     }
 }
