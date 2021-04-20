@@ -35,7 +35,9 @@ A single-player game in which the user inputs an `w` `a` `s` `d` and enter to mo
 | ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, `struct`, and other basic data types<br>- Use 2D arrays or structs for storing data |
 | ✔️ | Dynamic memory management | - Use `<vector>` to store a dynamic array of the players in the leaderboard |
 | ✔️ | File input/output (e.g., for loading/saving game status) | - For loading(extracting and inserting) high score and leaderboard |
-| ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation) or functions will be separated from the main file |
+| ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation), struct, and functions separated from the main file |
+| ✔️ | Proper indentation and naming styles |  |
+| ✔️ | In-code documentation |  |
 
 ## Remark
 use `make all` to compile game in Linux and `make clean` to remove all compiled item.
