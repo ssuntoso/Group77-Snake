@@ -126,7 +126,7 @@ void printLeaderBoard()
     }
     cout << '#' << setw(21) << '#' << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
-    cout << '#   TOP 10 RICHEST   #' << endl;
+    cout << "#   TOP 10 RICHEST   #" << endl;
     cout << "#    LEADERBOARD     #" << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
     sortingPlayer();

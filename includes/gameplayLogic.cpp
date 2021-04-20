@@ -229,11 +229,25 @@ void userInput(char z)
 
 void gameplay()
 {
+  if (current.x >= width - 1){
+    current.x = 1;
+  }
+  else if (current.x < 1) {
+    current.x = width - 2;
+  }
+  if (current.y >= height - 1){
+    current.y = 1;
+  }
+  else if (current.y < 1){
+    current.y = height - 2;
+  }
+
   int prev_x = tail_x[0];
 	int prev_y = tail_y[0];
 	int prev_2x, prev_2y;
 	tail_x[0] = current.x;
 	tail_y[0] = current.y;
+  
 	for (int i = 1; i < totalTail; i++)
 	{
 		prev_2x = tail_x[i];
@@ -243,17 +257,6 @@ void gameplay()
 		prev_x = prev_2x;
 		prev_y = prev_2y;
 	}
-
-  if (current.x >= width){
-    current.x = 0;
-  } else if (current.x < 0) {
-    current.x = width - 1;
-  }
-	if (current.y >= height){
-    current.y = 0;
-  } else if (current.y < 0){
-    current.y = height - 1;
-  }
 
 	for (int i = 1; i < totalTail; i++){
 		if (tail_x[i] == current.x && tail_y[i] == current.y){
