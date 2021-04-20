@@ -26,9 +26,9 @@ snake: $(objs)
 tgz		:= $(wildcard *.tgz)
 
 clean:
-	rm -f $(wildcard *.o) $(target) $(tgz)
+	rm -f $(wildcard *.o) $(target) $(tgz) leaderboard.txt
 
 tar:
-	tar -czvf $(tgz) *.cpp *.h *.o
+	tar -czvf $(tgz) *.cpp *.h *.o 
 
 .PHONY: clean tar

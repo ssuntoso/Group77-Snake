@@ -72,9 +72,12 @@ void sortingPlayer()
 void printLeaderBoard()
 {
     bool highestscore = true;
-    cout << "#####################" << endl;
-    cout << "#     GAMEOVER!     #" << endl;
-    cout << "#~~~~~~~~~~~~~~~~~~~#" << endl;
+    cout << "######################" << endl;
+    cout << '#' << setw(21) << '#' << endl;
+    cout << "#      GAMEOVER!     #" << endl;
+    cout << '#' << setw(21) << '#' << endl;
+    cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
+    cout << '#' << setw(21) << '#' << endl;
     for (int i = 0; i < players.size() - 1; ++i) {
         if (players.back().score < players[i].score) {
             highestscore = false;
@@ -82,50 +85,52 @@ void printLeaderBoard()
     }
     if (highestscore) {
         if (players.back().playerName == "Player"){
-            cout << "#     you beat      #" << endl;
-            cout << "#   the HIGHSCORE   #" << endl;
+            cout << "#      you beat      #" << endl;
+            cout << "#    the HIGHSCORE   #" << endl;
         }
         else if ((players.back().playerName).length() > 7) {
-            cout << "#     " << (players.back().playerName).substr(0, 8) << "      #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#     " << (players.back().playerName).substr(0, 8) << "       #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 7) {
-            cout << "#      " << players.back().playerName << "      #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#      " << players.back().playerName << "       #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 6) {
-            cout << "#      " << players.back().playerName << "       #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#      " << players.back().playerName << "        #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 5) {
-            cout << "#       " << players.back().playerName << "       #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#       " << players.back().playerName << "        #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 4) {
-            cout << "#       " << players.back().playerName << "        #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#       " << players.back().playerName << "         #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 3) {
-            cout << "#        " << players.back().playerName << "        #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#        " << players.back().playerName << "         #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 2) {
-            cout << "#        " << players.back().playerName << "         #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#        " << players.back().playerName << "          #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
         else if ((players.back().playerName).length() == 1) {
-            cout << "#         " << players.back().playerName << "         #" << endl;
-            cout << "# beat the HIGHSCORE#" << endl;
+            cout << "#         " << players.back().playerName << "          #" << endl;
+            cout << "# beat the HIGHSCORE #" << endl;
         }
     } else {
-        cout << "#  you didn't beat  #" << endl;
-        cout << "#   the HIGHSCORE   #" << endl;
+        cout << "#   you didn't beat  #" << endl;
+        cout << "#    the HIGHSCORE   #" << endl;
     }
-    cout << "#~~~~~~~~~~~~~~~~~~~#" << endl;
-    cout << "#    LEADERBOARD    #" << endl;
-    cout << "#~~~~~~~~~~~~~~~~~~~#" << endl;
+    cout << '#' << setw(21) << '#' << endl;
+    cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
+    cout << '#' << setw(21) << '#' << endl;
+    cout << "#     LEADERBOARD    #" << endl;
+    cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
     sortingPlayer();
-    for (int i = 0; i < players.size() && i < 13; ++i) {      // top 13 leaderboard to fit the interface
+    for (int i = 0; i < players.size() && i < 10; ++i) {      // top 10 leaderboard to fit the interface
         int interfacefit = 0;
         if ((players[i].playerName).length() < 9) {
             interfacefit = (players[i].playerName).length();
@@ -133,10 +138,10 @@ void printLeaderBoard()
         else {
             interfacefit = 8;
         }
-        cout << '#' << (players[i].playerName).substr(0, 8) << setfill('.')
-                << setw(19 - interfacefit) << players[i].score << '#' << endl;
+        cout << "# " << (players[i].playerName).substr(0, 8) << setfill('.')
+                << setw(18 - interfacefit) << players[i].score << " #" << endl;
     }
-    cout << "#####################" << endl;
+    cout << "######################" << endl;
 
     return;
 }

@@ -11,8 +11,8 @@
 
 using namespace std;
 
-const int height = 20;
-const int width = 20;
+const int height = 22;
+const int width = 22;
 const char barrier = '#';
 const char fruit = '$';
 bool gameOver;
@@ -49,25 +49,25 @@ void menu()
       }
     }
     else if (i == 6) {
-      cout << "#     ~~~~~~~~      #" << endl;
+      cout << "#      ~~~~~~~~       #" << endl;
     }
     else if (i == 7) {
-      cout << "#     SNAKE-77      #" << endl;
+      cout << "#      SNAKE-77       #" << endl;
     }
     else if (i == 8) {
-      cout << "#     ~~~~~~~~      #" << endl;
+      cout << "#      ~~~~~~~~       #" << endl;
     }
     else if (i == 10) {
-      cout << "#    PRESS ENTER    #" << endl;
+      cout << "#     PRESS ENTER     #" << endl;
     }
     else if (i == 11) {
-      cout << "#    TO CONTINUE    #" << endl;
+      cout << "#     TO CONTINUE     #" << endl;
     }
-    else if (i == 18) {
-      cout << "#  W A S D to Move  #" << endl;
+    else if (i == height - 2) {
+      cout << "#   W A S D to Move   #" << endl;
     }
-    else {
-      cout << "# by Rafael & Sean  #" << endl;
+    else if (i == height - 1){
+      cout << "#  by Rafael & Sean   #" << endl;
     }
   }
   for (int i = 0; i < width + 1; i++) {
@@ -99,31 +99,31 @@ void loading()
       }
     }
     else if (i == 6) {
-      cout << "#    ~~~~~~~~~~     #" << endl;
+      cout << "#     ~~~~~~~~~~      #" << endl;
     }
     else if (i == 7) {
-      cout << "#    LOADING...     #" << endl;
+      cout << "#     LOADING...      #" << endl;
     }
     else if (i == 8) {
-      cout << "#    ~~~~~~~~~~     #" << endl;
+      cout << "#     ~~~~~~~~~~      #" << endl;
     }
     else if (i == 10) {
-      cout << "#       press       #" << endl;
+      cout << "#        press        #" << endl;
     }
     else if (i == 11) {
-      cout << "#  w a s d in half  #" << endl;
+      cout << "#   w a s d in half   #" << endl;
     }
     else if (i == 12) {
-      cout << "#     a second      #" << endl;
+      cout << "#      a second       #" << endl;
     }
     else if (i == 13) {
-      cout << "#    then enter     #" << endl;
+      cout << "#     then enter      #" << endl;
     }
-    else if (i == 18) {
-      cout << "#   GRAB THE $$$    #" << endl;
+    else if (i == height - 2) {
+      cout << "#    GRAB THE $$$     #" << endl;
     }
-    else {
-      cout << "#      <><><>       #" << endl;
+    else if (i == height - 1) {
+      cout << "#       <><><>        #" << endl;
     }
   }
   for (int i = 0; i < width + 1; i++) {
@@ -142,8 +142,8 @@ void startPosition()
   gameOver = false;
   current.x = width / 2;
   current.y = height / 2;
-  current.fruitx = 1 + (rand() % (width - 1));
-  current.fruity = 1 + (rand() % (height - 1));
+  current.fruitx = 1 + (rand() % (width - 3));
+  current.fruity = 1 + (rand() % (height - 3));
   current.score = 0;
 }
 
@@ -151,41 +151,48 @@ void startPosition()
 void userInterface()
 {
   system("clear");
-  for (int i = 0; i < width + 1; i++) {
+  for (int i = 0; i < width; i++) {
     cout << barrier;
   }
   cout << endl;
   for (int i = 0; i < height; i++) {
-    for (int j = 0; j < width; j++) {
-      if (j == 0) {
-        cout << barrier;
-      }
-      else if (i == current.y && j == current.x) {
-        cout << "O";
-      }
-      else if (i == current.fruity && j == current.fruitx) {
-        cout << fruit;
-      }
-      else {
-        bool print = false;
-        for (int k = 0; k < totalTail; k++) {
-          if (tail_x[k] == j && tail_y[k] == i)
-          {
-            cout << "o";
-            print = true;
-          }
+    if (i == 0){
+      cout << "#### Grab the $!! ####";
+    }
+    if (i == height - 1){
+      cout << "####" << " Score:" << setw(6) << current.score << " " << "####";
+    } else {
+      for (int j = 0; j < width; j++) { 
+        if (j == 0 && i != 0) {
+          cout << barrier;
         }
-        if (!print)
-            cout << " ";
-			}
+        else if (i == current.y && j == current.x && i != 0 && j != width-1) {
+          cout << "O";
+        }
+        else if (i == current.fruity && j == current.fruitx) {
+          cout << fruit;
+        }
+        else {
+          bool print = false;
+          for (int k = 0; k < totalTail; k++) {
+            if (tail_x[k] == j && tail_y[k] == i && i != 0 && j != width-1)
+            {
+              cout << "o";
+              print = true;
+            }
+          }
+          if (!print)
+              cout << " ";
+        }
 
-      if (j == width-1) {
-        cout << barrier;
+        if (j == width - 2 && i != 0) {
+          cout << barrier;
+        }
       }
     }
     cout << endl;
   }
-  for (int k = 0; k < width + 1; k++) {
+  for (int k = 0; k < width; k++) {
     cout << barrier;
   }
   cout << endl;
