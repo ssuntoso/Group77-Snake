@@ -18,6 +18,8 @@ void menu();
 
 void loading();
 
+void setFruitPosition();
+
 void startPosition();
 
 void userInterface();

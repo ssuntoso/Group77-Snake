@@ -135,6 +135,18 @@ void loading()
   return;
 }
 
+void setFruitPosition()
+{
+  current.fruitx = 1 + (rand() % width);
+  current.fruity = 1 + (rand() % height);
+  if (current.fruitx > (width - 2)){
+    current.fruitx = width - 2;
+  } 
+  if (current.fruity > (height - 2)){
+    current.fruity = height - 2;
+  }
+} 
+
 // a function to setup the game
 void startPosition()
 {
@@ -142,8 +154,7 @@ void startPosition()
   gameOver = false;
   current.x = width / 2;
   current.y = height / 2;
-  current.fruitx = 1 + (rand() % (width - 3));
-  current.fruity = 1 + (rand() % (height - 3));
+  setFruitPosition();
   current.score = 0;
 }
 
@@ -256,8 +267,7 @@ void gameplay()
   if (current.x == current.fruitx && current.y == current.fruity)
 	{
 		current.score += 10;
-		current.fruitx = 1 + (rand() % (width - 1));
-		current.fruity = 1 + (rand() % (height - 1));
+		setFruitPosition();
 		totalTail++;
 	}
 }
