@@ -8,7 +8,7 @@ Group members<br/>
 :llama: Sean Michael Suntoso - 3035742437
 
 ## Game Description
-A single-player game in which the user inputs an arrow key to move a snake which moves constantly forward towards the input direction. The game challenges the user to keep the snake alive by touching a randomized food position since there is a countdown which can change the food position randomly. To make the game dynamic and hard, the snake’s length will increase as it touches food and if the snake touches its own body, the snake will die. Highest score will be counted as the snake touches food, this increases the competitiveness of the user while playing the game. At the end of the game, it will tell whether the player beat the highest score or not.
+A single-player game in which the user inputs an `w` `a` `s` `d` and enter to move a snake which moves constantly forward towards the input direction. The game challenges the user to keep the snake alive by eating a randomized food($) position and not to eat its own body. To make the game dynamic and hard, the snake’s length will increase as it eat food($) and if the snake touches its own body, the snake will die. Highest score will be counted as the snake touches food, this increases the competitiveness of the user while playing the game. At the end of the game, it will tell whether the player beat the highest score or not and show the leaderboard.
 
 ## Rules & How To Play
 1. Game starts from the center of the board when the player clicks one of the `w` `a` `s` `d` buttons.
@@ -19,7 +19,7 @@ A single-player game in which the user inputs an arrow key to move a snake which
 6. Game ends when the snake eats their own body.
 
 ## Feature
-1. Score 10 points when the snake manages to eat one food
+1. Player will get 10$ when the snake manages to eat one food
 2. Menu, Loading screen, Leaderboard, Highest score indication
 3. Move up, down, left, and right using `w` `a` `s` `d`
 4. Limited playing area (for the boundary of food appearance)
