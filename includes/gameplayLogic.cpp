@@ -1,19 +1,26 @@
 /*
-Game Title: SNAKE-77
-Group     : 77
-Author    : Kwan, Rafael Matthew Susanto (3035742425)
-            Suntoso, Sean Michael (3035742437)
-  
-This cpp file is a part of the COMP2113 course project SNAKE-77.
-
-required separated files for this cpp file:
-- ./includes/gameplayLogic.h
-- Makefile
- 
-This program is the logic of the game, containing functions
-that print the interface of the menu, loading screen,
-arena, random fruit, and dynamic snake.
-*/
+ * Game Title: SNAKE-77
+ * Group     : 77
+ * Author    : Kwan, Rafael Matthew Susanto (3035742425)
+ *             Suntoso, Sean Michael (3035742437)
+ *   
+ * This cpp file is a part of the COMP2113 course project SNAKE-77.
+ * 
+ * required separated files for SNAKE-77:
+ * - ./includes/gameplayLogic.cpp
+ * - ./includes/gameplayLogic.h 
+ * - ./includes/leaderboard.cpp
+ * - ./includes/leaderboard.h
+ * - Makefile
+ * 
+ * required separated files for this cpp file:
+ * - ./includes/gameplayLogic.h
+ * - Makefile
+ *  
+ * This program is the logic of the game, containing functions
+ * that print the interface of the menu, loading screen,
+ * arena, random fruit, and dynamic snake.
+ */
 
 #include <iostream>
 #include <string>

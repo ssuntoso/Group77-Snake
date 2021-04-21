@@ -1,34 +1,34 @@
 /*
-Game Title: SNAKE-77
-Group     : 77
-Author    : Kwan, Rafael Matthew Susanto (3035742425)
-            Suntoso, Sean Michael (3035742437)
-  
-This cpp file is the main part of COMP2113 course project SNAKE-77.
-
-required separated files for this cpp file:
-- ./includes/gameplayLogic.cpp
-- ./includes/gameplayLogic.h 
-- ./includes/leaderboard.cpp
-- ./includes/leaderboard.h
-- Makefile
- 
-use command $ make all to compile
-use command $ make clean to reset and clean the game
-
-SNAKE-77 is an arcade single-player game with goal to grow the snake
-until the snake touches its own tails. To grow the snake,
-player need to grab the $ that set randomly in a 20 x 20 playing arena
-by pressing w a s d and enter to control the movement of the snake
-or press q to exit ongoing game. When players manage to grab the $,
-10$ will be added to their account and the snake will grow 1 tail.
-
-If the arcade gameplay is over, the game will print the outro and 
-leaderboard that display top 10 richest players. To exit the game,
-player need to hit Ctrl + C.   
-
-Enjoy the game.
-*/
+ * Game Title: SNAKE-77
+ * Group     : 77
+ * Author    : Kwan, Rafael Matthew Susanto (3035742425)
+ *             Suntoso, Sean Michael (3035742437)
+ *   
+ * This cpp file is the main part of COMP2113 course project SNAKE-77.
+ * 
+ * required separated files for this cpp file:
+ * - ./includes/gameplayLogic.cpp
+ * - ./includes/gameplayLogic.h 
+ * - ./includes/leaderboard.cpp
+ * - ./includes/leaderboard.h
+ * - Makefile
+ *  
+ * use command $ make all to compile
+ * use command $ make clean to reset and clean the game
+ * 
+ * SNAKE-77 is an arcade single-player game with goal to grow the snake
+ * until the snake touches its own tails. To grow the snake,
+ * player need to grab the $ that set randomly in a 20 x 20 playing arena
+ * by pressing w a s d and enter to control the movement of the snake
+ * or press q to exit ongoing game. When players manage to grab the $,
+ * 10$ will be added to their account and the snake will grow 1 tail.
+ * 
+ * If the arcade gameplay is over, the game will print the outro and 
+ * leaderboard that display top 10 richest players. To exit the game,
+ * player need to hit Ctrl + C.   
+ * 
+ * Enjoy the game.
+ */
 
 #include <iostream>
 #include <iomanip>

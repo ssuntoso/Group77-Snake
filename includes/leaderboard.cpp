@@ -1,19 +1,26 @@
 /*
-Game Title: SNAKE-77
-Group     : 77
-Author    : Kwan, Rafael Matthew Susanto (3035742425)
-            Suntoso, Sean Michael (3035742437)
-  
-This cpp file is a part of the COMP2113 course project SNAKE-77.
-
-required separated files for this cpp file:
-- ./includes/leaderboard.h
-- Makefile
- 
-This program containing function required to process the game
-score leaderboard and store it in a file and function required 
-after the game.
-*/
+ *Game Title: SNAKE-77
+ *Group     : 77
+ *Author    : Kwan, Rafael Matthew Susanto (3035742425)
+ *            Suntoso, Sean Michael (3035742437)
+ *  
+ *This cpp file is a part of the COMP2113 course project SNAKE-77.
+ *
+ * required separated files for SNAKE-77:
+ * - ./includes/gameplayLogic.cpp
+ * - ./includes/gameplayLogic.h 
+ * - ./includes/leaderboard.cpp
+ * - ./includes/leaderboard.h
+ * - Makefile
+ * 
+ * required separated files for this cpp file:
+ * - ./includes/leaderboard.h
+ * - Makefile
+ *  
+ * This program containing function required to process the game
+ * score leaderboard and store it in a file and function required 
+ * after the game.
+ */
 
 
 #include <iostream>
