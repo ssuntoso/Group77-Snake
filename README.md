@@ -20,7 +20,7 @@ A single-player game in which the user inputs an `w` `a` `s` `d` and enter to mo
 
 ## Feature
 1. Player will get 10$ when the snake manages to eat one food
-2. Menu, Loading screen, Leaderboard, Highest score indication
+2. Menu, Loading screen, Leaderboard(displaying up to top 10 players), Highest score indication
 3. Move up, down, left, and right using `w` `a` `s` `d`
 4. Limited playing area (for the boundary of food appearance)
 5. Snake’s constant moves if the player does not input anything
