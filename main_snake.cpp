@@ -1,44 +1,44 @@
 /*
- * Games Title  : SNAKE
- * Author       : Kwan, Rafael Matthew Susanto (3035742425)
- *                Suntoso, Sean Michael (3035742437)
- * Group        : 77
- * 
- * This main file is part of COMP2113 final project SNAKE.
- * 
- * requiered files  : 
- * ./includes/gameplayLogic.cpp
- * ./includes/gameplayLogic.h 
- * ./includes/leaderboard.cpp
- * ./includes/leaderboard.h
- * Makefile
- * 
- * use command $ make all to compile
- * use command $ make clean to reset and clean the game
- * 
- * SNAKE is a single-playe game with goal to grow the snake
- * as long as the snake not bite its own body. To grow the 
- * snake, player need to grab the $ that set randomly in the
- * play (20 x 20) area by using a w s d and enter to control 
- * the snake and q to exit. When player manage to grab the $,
- * he/she will get 10$ and the snake will grow longer.
- * 
- * If the snake eat its own body, the game will end and the 
- * leaderboard will display top 10 players. To exit the game,
- * player need to hit Ctrl + C.   
- * 
- * Enjoy ^_^
- */
+Game Title: SNAKE-77
+Group     : 77
+Author    : Kwan, Rafael Matthew Susanto (3035742425)
+            Suntoso, Sean Michael (3035742437)
+  
+This cpp file is the main part of COMP2113 course project SNAKE-77.
+
+required separated files for this cpp file:
+- ./includes/gameplayLogic.cpp
+- ./includes/gameplayLogic.h 
+- ./includes/leaderboard.cpp
+- ./includes/leaderboard.h
+- Makefile
+ 
+use command $ make all to compile
+use command $ make clean to reset and clean the game
+
+SNAKE-77 is an arcade single-player game with goal to grow the snake
+until the snake touches its own tails. To grow the snake,
+player need to grab the $ that set randomly in a 20 x 20 playing arena
+by pressing w a s d and enter to control the movement of the snake
+or press q to exit ongoing game. When players manage to grab the $,
+10$ will be added to their account and the snake will grow 1 tail.
+
+If the arcade gameplay is over, the game will print the outro and 
+leaderboard that display top 10 richest players. To exit the game,
+player need to hit Ctrl + C.   
+
+Enjoy the game.
+*/
 
 #include <iostream>
 #include <iomanip>
-#include <string>
-#include <ctime>
-#include <thread>
+#include <string>     // string manipulation
+#include <ctime>      // random seed
+#include <thread>     // time limit
 #include <chrono>
 #include <vector>
 #include <fstream>
-#include <algorithm>
+#include <algorithm>  // to sort
 
 #include <unistd.h>
 #include <stdio.h>
@@ -89,30 +89,41 @@ int main()
   // display the game area
   userInterface();
 
-  cin >> z;       
-  oldz = z;
-  userInput(z);
+  cin >> z;     // get movement input from user
+  oldz = z;     // store movement
 
-  while (true){
+  userInput(z); // to move the snake
+
+
+  while (true) {
+    // print gameplay interface
     userInterface();
+
+    // thread for countdown
     thread t1([&](){
-      cin >> nextz;
-      userInput(nextz);
-      oldz = nextz;
+      cin >> nextz;     // get new movement input
+      userInput(nextz); // move the snake
+      oldz = nextz;     // store movement
     });
     this_thread::sleep_for(chrono::milliseconds(500));
-    t1.detach();
-    if (!nextz) {
-	    userInput(oldz);
+    t1.detach();        // after half a second if there is no input, it will this block
+
+    if (!nextz) {       // if the new movement input is 0
+	    userInput(oldz);  // move the snake using the previous stored movement
     }
-    gameplay();
-    nextz = 0;
+
+    gameplay();         // gameplay logic function
+
+    nextz = 0;          // reset new movement input
+
     if (bool_game_over()){
-      break;
+      break;            // if gameOver is true, break the loop
     }
   }
 
-  system("clear"); 
+  system("clear");      // refresh screen
+
+  // construct a player p with the current name and the final score
   Player p(currentPlayer, finalScore());
 
   // add score to the vector players

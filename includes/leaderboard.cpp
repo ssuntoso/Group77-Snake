@@ -1,22 +1,20 @@
 /*
- * Games Title  : SNAKE
- * Author       : Kwan, Rafael Matthew Susanto (3035742425)
- *                Suntoso, Sean Michael (3035742437)
- * Group        : 77
- * 
- * This cpp file is part of COMP2113 final project SNAKE.
- * 
- * This program containing function required to process the game
- * score leaderboard and store it in a file and function required
- * after the game.
- * 
- * requiered files  : 
- * ./includes/gameplayLogic.cpp
- * ./includes/gameplayLogic.h 
- * ./includes/leaderboard.cpp
- * ./includes/leaderboard.h
- * Makefile
- */
+Game Title: SNAKE-77
+Group     : 77
+Author    : Kwan, Rafael Matthew Susanto (3035742425)
+            Suntoso, Sean Michael (3035742437)
+  
+This cpp file is a part of the COMP2113 course project SNAKE-77.
+
+required separated files for this cpp file:
+- ./includes/leaderboard.h
+- Makefile
+ 
+This program containing function required to process the game
+score leaderboard and store it in a file and function required 
+after the game.
+*/
+
 
 #include <iostream>
 #include <fstream>
@@ -106,20 +104,24 @@ void sortingPlayer()
     return;
 }
 
+// print the outro interface of the game
 void printLeaderBoard()
 {
-    bool highestscore = true;
+    bool highestscore = true;                   // intitiate bool value to decide whether users score is higher than others
     cout << "######################" << endl;
     cout << '#' << setw(21) << '#' << endl;
-    cout << "#      GAMEOVER!     #" << endl;
+    cout << "#      GAMEOVER!     #" << endl;   // print gameover sign
     cout << '#' << setw(21) << '#' << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
     cout << '#' << setw(21) << '#' << endl;
     for (int i = 0; i < players.size() - 1; ++i) {
         if (players.back().score < players[i].score) {
-            highestscore = false;
+            highestscore = false;               // if any in the leaderboard is higher than current score, set false
         }
     }
+    
+    // if bool value true, print users beat the highscore
+    // otherwise, print users didn't beat the highscore
     if (highestscore) {
         if (players.back().playerName == "Player"){
             cout << "#      you beat      #" << endl;
@@ -163,18 +165,28 @@ void printLeaderBoard()
     }
     cout << '#' << setw(21) << '#' << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
-    cout << "#   TOP 10 RICHEST   #" << endl;
+    cout << "#   TOP 10 RICHEST   #" << endl;       // leaderboard sign
     cout << "#    LEADERBOARD     #" << endl;
     cout << "#~~~~~~~~~~~~~~~~~~~~#" << endl;
+
+    // call sorting function
     sortingPlayer();
-    for (int i = 0; i < players.size() && i < 10; ++i) {      // top 10 leaderboard to fit the interface
-        int interfacefit = 0;
+
+    // loop through 10 names or vector size if the size is below 10
+    // print their names with the scores
+    for (int i = 0; i < players.size() && i < 10; ++i) {
+        int interfacefit = 0;       // value to fit the print
+
+        // set the value for setw purpose
         if ((players[i].playerName).length() < 9) {
             interfacefit = (players[i].playerName).length();
         }
         else {
             interfacefit = 8;
         }
+        
+        // print the first 8 characters of players' names and their scores
+        // setw for consistent print
         cout << "# " << (players[i].playerName).substr(0, 8) << setfill('.')
                 << setw(18 - interfacefit) << players[i].score << " #" << endl;
     }
@@ -203,13 +215,14 @@ void closeLeaderboard()
     return;
 }
 
+// compare bool function for sorting purpose
 bool cmp_player_score(const Player & a, const Player & b)
 {
-    if (a.score > b.score) {                // compare score
+    if (a.score > b.score) {                // compare players' score
         return true;
     }
-    else if (a.score == b.score) {
-        if (a.playerName < b.playerName) {  // lexicographical order
+    else if (a.score == b.score) {          // if same score
+        if (a.playerName < b.playerName) {  // compare players' name in ascending order
             return true;
         }
         else {

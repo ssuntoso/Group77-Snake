@@ -1,21 +1,19 @@
 /*
- * Games Title  : SNAKE
- * Author       : Kwan, Rafael Matthew Susanto (3035742425)
- *                Suntoso, Sean Michael (3035742437)
- * Group        : 77
- * 
- * This cpp file is part of COMP2113 final project SNAKE.
- * 
- * This program is the logic of the game. containing function
- * required during the game.
- * 
- * requiered files  : 
- * ./includes/gameplayLogic.cpp
- * ./includes/gameplayLogic.h 
- * ./includes/leaderboard.cpp
- * ./includes/leaderboard.h
- * Makefile
- */
+Game Title: SNAKE-77
+Group     : 77
+Author    : Kwan, Rafael Matthew Susanto (3035742425)
+            Suntoso, Sean Michael (3035742437)
+  
+This cpp file is a part of the COMP2113 course project SNAKE-77.
+
+required separated files for this cpp file:
+- ./includes/gameplayLogic.h
+- Makefile
+ 
+This program is the logic of the game, containing functions
+that print the interface of the menu, loading screen,
+arena, random fruit, and dynamic snake.
+*/
 
 #include <iostream>
 #include <string>
@@ -30,33 +28,40 @@
 
 using namespace std;
 
-// height and width set to 22 since it is also 
-// include the barrier at left, right, top and bottom
-const int height = 22;        
+// the constant height and width throughout all the interfaces
+// used to limit the game arena
+const int height = 22;
 const int width = 22;
 
+// the constant barrier and fruit character to be used in the gameplay
 const char barrier = '#';
 const char fruit = '$';
+
+// intitialize bool value to stop the while loop of the game
 bool gameOver;
 
+// initialize arrays of int for the snake tails' positions
 int tail_x[400], tail_y[400];
 
-// set to one since the first tail will print under the snake head
+// number of tail set to one since the first tail will print before the snake head
 int totalTail = 1;
 
+// initiate current position
 position current;
 
 int stopPlaying = false;
 
 char askUser;
 
-// function to call menu
+// function to print the menu interface
 void menu()
 {
-  for (int i = 0; i < width + 1; i++) {
+  for (int i = 0; i < width + 1; i++) {   // print the top barrier
       cout << barrier;
   }
   cout << endl;
+
+  // loop until the end of height and width to print the middle section
   for (int i = 0; i < height; i++) {
     if ((i < 6 || i > 11 || i == 9) && i < 18) {
       for (int j = 0; j < width + 1; j++) {
@@ -93,20 +98,24 @@ void menu()
       cout << "#  by Rafael & Sean   #" << endl;
     }
   }
-  for (int i = 0; i < width + 1; i++) {
+
+  for (int i = 0; i < width + 1; i++) {   // print the bottom barrier
     cout << barrier;
   }
 
   return;
 }
 
-// function to call loading
+// function to print loading screen
 void loading()
 {
-  for (int i = 0; i < width + 1; i++) {
+  for (int i = 0; i < width + 1; i++) {   // print the top barrier
       cout << barrier;
   }
   cout << endl;
+
+  // loop until the end of height and width to print the middle section
+  // a small 'how to play' description
   for (int i = 0; i < height; i++) {
     if ((i < 6 || i > 13 || i == 9) && i < 18) {
       for (int j = 0; j < width + 1; j++) {
@@ -149,7 +158,7 @@ void loading()
       cout << "#       <><><>        #" << endl;
     }
   }
-  for (int i = 0; i < width + 1; i++) {
+  for (int i = 0; i < width + 1; i++) {   // print the bottom barrier
     cout << barrier;
   }
 
@@ -158,6 +167,7 @@ void loading()
   return;
 }
 
+// function to randomized food position
 void setFruitPosition()
 {
   current.fruitx = 1 + (rand() % width);
@@ -170,63 +180,68 @@ void setFruitPosition()
   }
 } 
 
-// a function to setup the game
+// function to set up the starting point
 void startPosition()
 {
-  srand(time(NULL));                // randomized seed
+  srand(time(NULL));        // randomized seed
   gameOver = false;
-  current.x = width / 2;
-  current.y = height / 2;
-  setFruitPosition();
-  current.score = 0;
+  current.x = width / 2;    // middle of the widthh
+  current.y = height / 2;   // middle of the heigth
+
+  setFruitPosition();       // random food position
+  current.score = 0;        // inititate score
 }
 
-// a function to draw the interface
+// function to print the arena, snake head, tails, and fruits
 void userInterface()
 {
-  system("clear");
-  for (int i = 0; i < width; i++) {
+  system("clear");                      // refresh screen
+
+  for (int i = 0; i < width; i++) {     // print the top barrier
     cout << barrier;
   }
   cout << endl;
+
+  // loop until the end of height and width to print the middle section
   for (int i = 0; i < height; i++) {
     if (i == 0){
       cout << "#### Grab the $$$ ####";
     }
     if (i == height - 1){
-      cout << "### " << "Account:"  << setw(5) << current.score << "$ ###";
-    } else {
+      cout << "### " << "Account:"  << setw(5) << current.score << "$ ###";   // score indication
+    }
+    else {
       for (int j = 0; j < width; j++) { 
-        if (j == 0 && i != 0) {
+        if (j == 0 && i != 0) {         // print the left barrier
           cout << barrier;
         }
         else if (i == current.y && j == current.x && i != 0 && j != width-1) {
-          cout << "O";
+          cout << "O";                  // print snake head
         }
         else if (i == current.fruity && j == current.fruitx) {
-          cout << fruit;
+          cout << fruit;                // print fruit
         }
         else {
-          bool print = false;
+          bool print = false;           // intialize bool value to whether print tail or space
           for (int k = 0; k < totalTail; k++) {
             if (tail_x[k] == j && tail_y[k] == i && i != 0 && j != width-1)
             {
-              cout << "o";
+              cout << "o";              // print tails
               print = true;
             }
           }
           if (!print)
-              cout << " ";
+              cout << " ";              // print spaces
         }
 
-        if (j == width - 2 && i != 0) {
+        if (j == width - 2 && i != 0) { // print the right barrier
           cout << barrier;
         }
       }
     }
     cout << endl;
   }
-  for (int k = 0; k < width; k++) {
+  for (int k = 0; k < width; k++) {     // print the bottom barrier
     cout << barrier;
   }
 }
@@ -262,22 +277,22 @@ void gameplay()
 {
   // if the snake reach the end of the playing area
   if (current.x >= width - 1){      
-    current.x = 1;                  // on the right, it will reset x to 1
+    current.x = 1;                  // on the right, it will reset x to the left side
   } 
   else if (current.x < 1) {       
     current.x = width - 2;          // on the left, it will reset x to the right side
   }
   if (current.y >= height - 1){
-    current.y = 1;                  // on the bottom, it will reset y to 1
+    current.y = 1;                  // on the bottom, it will reset y to the top
   }
   else if (current.y < 1){
-    current.y = height - 2;         // on the top, it will reset y to bottom
+    current.y = height - 2;         // on the top, it will reset y to the bottom
   }
 
-  int prev_x = tail_x[0];
+  int prev_x = tail_x[0];           // store previous tail
 	int prev_y = tail_y[0];
 	int prev_2x, prev_2y;
-	tail_x[0] = current.x;
+	tail_x[0] = current.x;            // tail position follow current position (snake head)
 	tail_y[0] = current.y;
   
   // print snake tail according to totalTail
@@ -314,10 +329,12 @@ void gameplay()
 	}
 }
 
+// function to return the gameOver value
 bool bool_game_over() {
   return gameOver;
 }
 
+// function to return the final score
 int finalScore() {
   return current.score;
 }

@@ -1,21 +1,17 @@
 /*
- * Games Title  : SNAKE
- * Author       : Kwan, Rafael Matthew Susanto (3035742425)
- *                Suntoso, Sean Michael (3035742437)
- * Group        : 77
- * 
- * This header file is part of COMP2113 final project SNAKE.
- * 
- * This program is a header file contain the logic required 
- * during the game.
- * 
- * requiered files  : 
- * ./includes/gameplayLogic.cpp
- * ./includes/gameplayLogic.h 
- * ./includes/leaderboard.cpp
- * ./includes/leaderboard.h
- * Makefile
- */
+Game Title: SNAKE-77
+Group     : 77
+Author    : Kwan, Rafael Matthew Susanto (3035742425)
+            Suntoso, Sean Michael (3035742437)
+  
+This header file is a part of the COMP2113 course project SNAKE-77.
+
+required separated files for this header file:
+- Makefile
+ 
+This header file declare the functions for the logic of the game
+that will be passed to the correlated cpp file, gameplayLogic.cpp
+*/
 
 #ifndef GAMEPLAYLOGIC_H
 #define GAMEPLAYLOGIC_H
@@ -24,6 +20,7 @@
 
 using namespace std;
 
+// initialize user-defined datatype to be used throughout the game
 class position {
 public:
   int x;
@@ -33,14 +30,19 @@ public:
   int score;
 };
 
+// menu interface
 void menu();
 
+// loading screen interface
 void loading();
 
+// randomized fruit positions
 void setFruitPosition();
 
+// the starting point for some of the declared variables
 void startPosition();
 
+// print the arena, snake, and fruit
 void userInterface();
 
 // move snake or end the game
