@@ -1,4 +1,4 @@
-/*
+/**
  * Game Title: SNAKE-77
  * Group     : 77
  * Author    : Kwan, Rafael Matthew Susanto (3035742425)
@@ -13,12 +13,13 @@
  * - ./includes/leaderboard.h
  * - Makefile
  * 
- * required separated files for this header file:
- * - Makefile
- *  
  * This header file containing function required to process the game
  * score leaderboard and store it in a file and function required
  * after the game. Correlated with leaderboard.cpp
+ * 
+ * required separated files for this header file:
+ * - Makefile
+ *  
  */
 
 #ifndef LEADERBOARD_H

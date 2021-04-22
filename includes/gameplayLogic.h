@@ -1,4 +1,4 @@
-/*
+/**
  * Game Title: SNAKE-77
  * Group     : 77
  * Author    : Kwan, Rafael Matthew Susanto (3035742425)
@@ -13,11 +13,12 @@
  * - ./includes/leaderboard.h
  * - Makefile
  * 
+ * This header file declare the functions for the logic of the game
+ * that will be passed to the correlated cpp file, gameplayLogic.cpp
+ * 
  * required separated files for this header file:
  * - Makefile
  *  
- * This header file declare the functions for the logic of the game
- * that will be passed to the correlated cpp file, gameplayLogic.cpp
  */
 
 #ifndef GAMEPLAYLOGIC_H

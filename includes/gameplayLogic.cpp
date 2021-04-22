@@ -1,4 +1,4 @@
-/*
+/**
  * Game Title: SNAKE-77
  * Group     : 77
  * Author    : Kwan, Rafael Matthew Susanto (3035742425)
@@ -13,13 +13,14 @@
  * - ./includes/leaderboard.h
  * - Makefile
  * 
+ * This program is the logic of the game, containing functions
+ * that print the interface of the menu, loading screen,
+ * arena, random fruit, and dynamic snake.
+ * 
  * required separated files for this cpp file:
  * - ./includes/gameplayLogic.h
  * - Makefile
  *  
- * This program is the logic of the game, containing functions
- * that print the interface of the menu, loading screen,
- * arena, random fruit, and dynamic snake.
  */
 
 #include <iostream>
