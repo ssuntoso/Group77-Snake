@@ -12,7 +12,7 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 
 ## Rules & How To Play
 1. Game starts from the center of the board when the player clicks one of the `w` `a` `s` `d` buttons.
-2. The snake will move at constant speed and only move up, down, left, and right.
+2. The snake will move at the constant speed of a character / half a second and only move up, down, left, and right.
 3. Food will appear at a random position everytime the snake touch the position of the food. If players manage to eat it—by passing the snake head on the food during that time frame, the snake will get longer for one square and the player receives 10 points.
 4. There is only one food at a time. 
 5. If the snake runs to the edge of the box, it will continue to the other side(bottom of the box will continue from the top, left will continue at right, and vice-versa). 
@@ -25,7 +25,7 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 4. Move up, down, left, and right using `w` `a` `s` `d`
 5. Limited playing area (for the boundary of food appearance)
 6. Snake’s constant moves if the player does not input anything
-7. Randomized food location
+7. Randomized food location (using time as the seed)
 8. Food appears randomly after it has been eaten
 9. Game over when snake touches its own body or press `q`
 
