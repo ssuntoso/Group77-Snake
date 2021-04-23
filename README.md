@@ -14,12 +14,12 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 1. Use `make all` to compile the program.
 2. To execute the program use command `./snake`.
 3. Follow the on screen instructions.
-4. Use `w` `a` `s` `d` to move the snake and `q` to end the game.
+4. Use `w` `a` `s` `d` then `enter` to move the snake and `q` then `enter` to end the game.
 5. After finish, `make clean` command is available to clean all the output file and remove the leaderboard file.
 6. Make sure to recompile using `make all` again after clean using `make clean` before repeat step 2.  
 
 ## Rules & How To Play
-1. Game starts from the center of the board when the player clicks one of the `w` `a` `s` `d` buttons.
+1. Game starts from the center of the board when the player clicks one of the `w` `a` `s` `d` and then `enter` buttons.
 2. The snake will move at the constant speed of a character / half a second and only move up, down, left, and right.
 3. Food will appear at a random position everytime the snake touch the position of the food. If players manage to eat it—by passing the snake head on the food during that time frame, the snake will get longer for one square and the player receives 10 points.
 4. There is only one food at a time. 
