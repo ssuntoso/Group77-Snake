@@ -10,6 +10,14 @@ Group members<br/>
 ## Game Description
 A single-player game in which the user inputs `w` `a` `s` `d` and enter to change the snake movement which moves constantly forward towards the input direction. The game challenges the user to beat the highscore by eating a randomized food ($) position and keep the snake alive by not touching its own tails. To make the game dynamic and hard, the snake’s tails will increase as it eat food ($) and if the snake touches its own tails, the snake will die. Highest score will be counted as the snake touches food, this increases the competitiveness of the user while playing the game. At the end of the game, it will tell whether the player beat the highest score or not and show the leaderboard.
 
+## Quick Start Guide
+1. Use `make all` to compile the program.
+2. To execute the program use command `./snake`.
+3. Follow the on screen instructions.
+4. Use `w` `a` `s` `d` to move the snake and `q` to end the game.
+5. After finish, `make clean` command is available to clean all the output file and remove the leaderboard file.
+6. Make sure to recompile using `make all` again after clean using `make clean` before repeat step 2.  
+
 ## Rules & How To Play
 1. Game starts from the center of the board when the player clicks one of the `w` `a` `s` `d` buttons.
 2. The snake will move at the constant speed of a character / half a second and only move up, down, left, and right.
@@ -39,6 +47,3 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 | ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation), struct, and functions separated from the main file |
 | ✔️ | Proper indentation and naming styles |  |
 | ✔️ | In-code documentation |  |
-
-## Remark
-use `make all` to compile game in Linux and `make clean` to remove all compiled item.
