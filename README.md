@@ -11,7 +11,7 @@ Group members<br/>
 A single-player game in which the user inputs `w` `a` `s` `d` and enter to change the snake movement which moves constantly forward towards the input direction. The game challenges the user to beat the highscore by eating a randomized food ($) position and keep the snake alive by not touching its own tails. To make the game dynamic and hard, the snake’s tails will increase as it eat food ($) and if the snake touches its own tails, the snake will die. Highest score will be counted as the snake touches food, this increases the competitiveness of the user while playing the game. At the end of the game, it will tell whether the player beat the highest score or not and show the leaderboard.
 
 ## Quick Start Guide
-1. Use `make all` to compile the program.
+1. Use `make all` to compile all the files for the program.
 2. To execute the program use command `./snake`.
 3. Follow the on screen instructions.
 4. Use `w` `a` `s` `d` then `enter` to move the snake and `q` then `enter` to end the game.
@@ -26,7 +26,7 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 5. If the snake runs to the edge of the box, it will continue to the other side(bottom of the box will continue from the top, left will continue at right, and vice-versa). 
 6. Game ends when the snake eats their own body.
 
-## Feature
+## Features
 1. Player will get 10$ when the snake manages to eat one food
 2. Menu, loading screen, leaderboard which display 10 top players
 3. Beat 'the highest score or not' indication
@@ -43,8 +43,8 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 | ✔️ | Generation of random game sets or events | - `<cstdlib>` to use `rand()` and `srand()` for random food location<br>- `<ctime>` to generate seed for `srand()`<br>- `<iomanip>` to set width<br>- `<string>` for string manipulation<br>- Using switches, if-statements, and loops|
 | ✔️ | Data structures for storing game status | - Using `bool`, `int`, `array`, `struct`, and other basic data types<br>- Use 2D arrays or structs for storing data |
 | ✔️ | Dynamic memory management | - Use `<vector>` to store a dynamic array of the players in the leaderboard |
-| ✔️ | File input/output (e.g., for loading/saving game status) | - For loading(extracting and inserting) high score and leaderboard |
-| ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation), struct, and functions separated from the main file |
+| ✔️ | File input/output (e.g., for loading/saving game status) | - For loading (extracting and inserting) high score and leaderboard |
+| ✔️ | Program codes in multiple files | - Implement codes header, custom classes (interface and implementation), struct, and functions separated from the main file |
 | ✔️ | Proper indentation and naming styles |  |
 | ✔️ | In-code documentation |  |
 | ✔️ | Tested on `academy11` server |  |
