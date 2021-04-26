@@ -47,3 +47,4 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 | ✔️ | Program codes in multiple files | - Implement codes header, custom classes(interface and implementation), struct, and functions separated from the main file |
 | ✔️ | Proper indentation and naming styles |  |
 | ✔️ | In-code documentation |  |
+| ✔️ | Tested on `academy11` server |  |
