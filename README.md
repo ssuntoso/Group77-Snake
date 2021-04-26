@@ -50,6 +50,6 @@ A single-player game in which the user inputs `w` `a` `s` `d` and enter to chang
 | ✔️ | Tested on `academy11` server |  |
 
 ## References
-Nvitanovic. <i>Simple Snake Game Part 1</i>. https://youtu.be/E_-lMZDi7Uw
-Nvitanovic. <i>Simple Snake Game Part 2</i>. https://youtu.be/W1e5wO7XR2w
-Nvitanovic. <i>Simple Snake Game Part 3</i>. https://youtu.be/PSoLD9mVXTA
+Nvitanovic. <i>Simple Snake Game Part 1</i>. https://youtu.be/E_-lMZDi7Uw<br>
+Nvitanovic. <i>Simple Snake Game Part 2</i>. https://youtu.be/W1e5wO7XR2w<br>
+Nvitanovic. <i>Simple Snake Game Part 3</i>. https://youtu.be/PSoLD9mVXTA<br>
